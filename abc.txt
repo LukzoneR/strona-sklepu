@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 hbdfhdfhfchbcvb
+=======
+1234
+>>>>>>> b9466041736cbca97889c3121d3e62aaf5187c7b
+
+xcxzc
+xcxzc
