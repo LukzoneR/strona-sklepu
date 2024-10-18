@@ -1,0 +1,2 @@
+# strona-sklepu
+website template
