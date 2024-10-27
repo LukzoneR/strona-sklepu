@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+
+
+:root {
+    --primary-color: #000000;
+    --secondary-color: #ff017d;
+    --background-color: #f9f9f9;
+    --light-gray: #ebebeb;
+    --dark-gray: #6c6c6c;
+}
+
+
+
+#topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--background-color);
+    padding: 10px 150px;
+    font-size: 14px;
+    color: var(--dark-gray);
+    border-bottom: 1px solid var(--light-gray);
+}
+
+#topbar h3 {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+}
+
+#topbar img {
+    width: 18px;
+    margin-right: 5px;
+}
+
+
+#midbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    
+}
+
+
+#logo img {
+    height: 40px;
+    cursor: pointer;
+}
+
+
+#searchbar {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto; 
+    position: relative;
+}
+
+#searchbar input[type="text"] {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid var(--light-gray);
+    border-radius: 25px;
+    background-color: white;
+    color: var(--dark-gray);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#searchbar input[type="text"]::placeholder {
+    color: var(--dark-gray);
+    opacity: 0.6;
+}
+
+#searchbar input[type="text"]:focus {
+    border-color: var(--primary-color);
+}
+
+.formularz {
+    width: 122%;
+}
+
+#searchbar a {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+#searchbar img {
+    width: 15px;
+    height: 15px;
+    filter: invert(1);
+}
+
+
+#cart {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: var(--dark-gray);
+}
+
+#cart a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-gray);
+}
+
+#cart img {
+    width: 24px;
+    margin-left: 5px;
+}
