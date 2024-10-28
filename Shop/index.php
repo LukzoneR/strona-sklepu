@@ -52,7 +52,7 @@
         </div>
         <div id="categories">
             <ul>
-                <li><a href="#" class="category-link" data-id="1"</a></li>
+                <li><a href="#" class="category-link" data-id="1">Telefony</a></li>
                 <li><a href="#" class="category-link" data-id="2">Smartwatche</a></li>
                 <li><a href="#" class="category-link" data-id="3">Laptopy</a></li>
                 <li><a href="#" class="category-link" data-id="4">Telewizory</a></li>
