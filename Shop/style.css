@@ -45,19 +45,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 10px 20px;
     background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    width: 95%;
     
 }
 
 
 #logo img {
-    height: 40px;
+    width: 160px;
+    height: auto;
     cursor: pointer;
+    margin-bottom: -40px;
+    margin-top: -40px;
+    margin-left: 50%;
 }
+
 
 
 #searchbar {
@@ -67,6 +69,7 @@
     margin: 0 auto; 
     position: relative;
 }
+
 
 #searchbar input[type="text"] {
     width: 100%;
@@ -130,5 +133,90 @@
 
 #cart img {
     width: 24px;
+    margin-right: 20px;
+
+}
+
+
+
+#user {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: var(--dark-gray);
+    margin-right: 20px;
+}
+
+#user img {
+    width: 24px;
     margin-left: 5px;
 }
+
+
+#user a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-gray);
+}
+
+#categories {
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--light-gray);
+    padding: 10px 150px;
+}
+
+#categories ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#categories li {
+    padding: 10px 20px;
+    margin: 0 30px;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#categories li::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+#categories li:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+#categories li:hover {
+    background-color: rgba(211, 211, 211, 0.2);
+}
+
+#categories a.category-link {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-size: 15px;
+    font-weight: 600;
+    transition: color 0.3s;
+    display: block;
+    height: 100%;
+    line-height: 1.5;
+}
+
+#categories a.category-link:hover {
+    color: var(--primary-color);
+}
+
+#categories a.highlight {
+    color: var(--secondary-color);
+}
+

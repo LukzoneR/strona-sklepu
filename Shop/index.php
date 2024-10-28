@@ -38,7 +38,9 @@
                 </form>       
             </div>
             <div id="user">
-                Konto <img src="./icons/user.png" alt="Użytkownik">
+                <a href="#">
+                    Konto <img src="./icons/user.png" alt="Użytkownik">
+                </a>
             </div>
 
             <div id="cart" onclick="window.location.href='./index.php'">
@@ -50,15 +52,16 @@
         </div>
         <div id="categories">
             <ul>
-                <li><a href="#" class="category-link" data-id="1">Smartfony</a></li>
+                <li><a href="#" class="category-link" data-id="1"</a></li>
                 <li><a href="#" class="category-link" data-id="2">Smartwatche</a></li>
                 <li><a href="#" class="category-link" data-id="3">Laptopy</a></li>
                 <li><a href="#" class="category-link" data-id="4">Telewizory</a></li>
                 <li><a href="#" class="category-link" data-id="5">Myszki i Klawiatury</a></li>
                 <li><a href="#" class="category-link" data-id="6">Monitory</a></li>
-                <li><a href="#" class="category-link" data-id="7">Promocje</a></li>
+                <li><a href="#" class="category-link highlight" data-id="7">Promocje</a></li>
             </ul>
         </div>
+
     </header>
     <main>
 
