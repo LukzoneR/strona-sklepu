@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Błąd połączenia: " . $conn->connect_error);
 }
 
-echo "Połączenie z bazą danych zostało nawiązane pomyślnie!";
+echo "Połączenie z bazą danych zostało nawiązane pomyślnie";
 
 $conn->close();
 
