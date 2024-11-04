@@ -1,6 +1,5 @@
 <?php
 include("connect.php");
-
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +7,7 @@ include("connect.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sklep</title>
+    <title>Techmart</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
@@ -18,22 +17,17 @@ include("connect.php");
             <div>
                 <h3><img src="./icons/users.png" alt=""> Tysiące zadowolonych klientów</h3>
             </div>
-
             <div>
                 <h3><img src="./icons/truck.png" alt=""> Darmowa wysyłka w ten sam dzień</h3>
             </div>
-
             <div>
                 <h3><img src="./icons/calendar.png" alt=""> Od 10 lat na rynku</h3>
             </div>
-
-            
         </div>
         <div id="midbar">
             <div id="logo" onclick="window.location.href='./index.php'">
                 <img src="./images/logos/RefinedTechMartLogo.svg" alt="Logo strony">
             </div>
-
             <div id="searchbar">
                 <form action="/search" method="GET" class="formularz">
                     <input type="text" name="query" placeholder="Szukaj produktów...">
@@ -42,18 +36,16 @@ include("connect.php");
                     </a>
                 </form>       
             </div>
-            <div id="user">
+            <div id="user" onclick="document.getElementById('login-modal').style.display='block'">
                 <a href="#">
                     Konto <img src="./icons/user.png" alt="Użytkownik">
                 </a>
             </div>
-
             <div id="cart" onclick="window.location.href='./index.php'">
                 <a href="#">
                     Koszyk <img src="./icons/cart.png" alt="Koszyk">
                 </a>
             </div>
-
         </div>
         <div id="categories">
             <ul>
@@ -66,16 +58,56 @@ include("connect.php");
                 <li><a href="#" class="category-link highlight" data-id="7">Promocje</a></li>
             </ul>
         </div>
-
     </header>
     <main>
-
-
+        
     </main>
     <footer>
         <div id="contact">
-
+            
         </div>
     </footer>
+
+    
+
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Logowanie</h2>
+            <div id="form-container">
+                <form id="login-form" action="/login" method="POST">
+                    <div class="form-group">
+                        <label for="username">Nazwa użytkownika:</label>
+                        <input type="text" id="username" name="username" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Hasło:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">Zaloguj się</button>
+                </form>
+                <form id="registration-form" action="/register" method="POST" style="display: none;">
+                    <div class="form-group">
+                        <label for="reg-username">Nazwa użytkownika:</label>
+                        <input type="text" id="reg-username" name="username" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Hasło:</label>
+                        <input type="password" id="reg-password" name="password" required oninput="checkPasswordStrength()">
+                        <div class="password-strength" id="password-strength"></div>
+                        <div id="requirements">
+                            <div id="length" class="requirement">Minimum 8 znaków</div>
+                            <div id="uppercase" class="requirement">Jedna wielka litera</div>
+                            <div id="number" class="requirement">Jedna cyfra</div>
+                            <div id="special" class="requirement">Jedno specjalne znaki</div>
+                        </div>
+                    </div>
+                    <button type="submit">Zarejestruj się</button>
+                </form>
+                <div id="toggle-link" onclick="toggleForms()">Nie masz konta? Zarejestruj się</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

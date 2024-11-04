@@ -207,14 +207,14 @@
 
 #categories a.category-link {
     display: block; 
-    padding: 10px 15px; /* Zwiększono padding, aby zachować rozmiar */
+    padding: 10px 15px;
     text-decoration: none;
     color: var(--dark-gray);
     font-size: 15px;
     font-weight: 600;
     transition: color 0.3s;
-    height: 100%; /* Umożliwia pełną wysokość */
-    line-height: 1.5; /* Utrzymuje równą wysokość */
+    height: 100%;
+    line-height: 1.5;
 }
 
 #categories a.category-link:hover {
@@ -225,3 +225,162 @@
     color: var(--secondary-color);
 }
 
+
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.5s;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 8% auto; 
+    padding: 30px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideIn {
+    from {transform: translateY(-50%);}
+    to {transform: translateY(0);}
+}
+
+
+.modal.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    background-color: #f0f9ff;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+#toggle-link {
+    color: #7a9abe;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+#toggle-link:hover {
+    color: #557a98;
+}
+
+
+.password-strength {
+    height: 5px;
+    border-radius: 4px;
+    margin-top: 5px;
+    background-color: #e0e0e0;
+    transition: width 0.3s;
+}
+
+.strength-weak {
+    background-color: red;
+    width: 0%;
+}
+
+.strength-medium {
+    background-color: orange;
+    width: 0%;
+}
+
+.strength-strong {
+    background-color: green;
+    width: 0%;
+}
+
+.requirement {
+    color: red;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(0);
+}
+
+.requirement.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+
+#requirements {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+}
