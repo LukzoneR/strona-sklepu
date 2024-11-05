@@ -85,3 +85,22 @@ function checkPasswordStrength() {
     }
 }
 
+
+
+//Ładowanie produktów według kategorii
+document.querySelectorAll('.category-link').forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const category = this.getAttribute('data-category');
+
+        fetch(`index.php?category=${category}&ajax=1`)
+            .then(response => response.text())
+            .then(data => {
+                const productGrid = document.querySelector('.product-grid');
+                productGrid.innerHTML = data;
+            })
+            .catch(error => console.error('Błąd:', error));
+    })
+})
+

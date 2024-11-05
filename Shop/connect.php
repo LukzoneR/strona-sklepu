@@ -1,16 +1,53 @@
 <?php
+$host = 'localhost';
+$dbname = 'sklep';
+$user = 'root';
+$pass = '';
 
-$host = 'localhost'; 
-$user = 'root'; 
-$password = '';
-$database = 'sklep';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-$conn = new mysqli($host, $user, $password, $database);
+$isAjaxRequest = isset($_GET['ajax']) && $_GET['ajax'] == '1';
 
-if ($conn->connect_error) {
-    die("Błąd połączenia: " . $conn->connect_error);
+$selectedCategory = isset($_GET['category']) ? $_GET['category'] : null;
+
+$validCategories = ['smartfony', 'smartwatche', 'laptopy', 'telewizory', 'myszki_i_klawiatury', 'monitory', 'promocje'];
+if ($selectedCategory && !in_array($selectedCategory, $validCategories)) {
+    $selectedCategory = null;
 }
 
-$conn->close();
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    if ($selectedCategory) {
+        $query = "SELECT marka, model, cena, photo FROM " . $selectedCategory;
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $productHtml = '';
+        foreach ($products as $product) {
+            $productHtml .= '
+                <div class="product-card">
+                    <img src="' . htmlspecialchars($product['photo']) . '" alt="Zdjęcie produktu">
+                    <h3>' . htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']) . '</h3>
+                    <p class="price">Cena: ' . htmlspecialchars($product['cena']) . ' PLN</p>
+                </div>';
+        }
+
+    } else {
+        $products = [];
+        $productHtml = '';
+    }
+
+    if ($isAjaxRequest) {
+        echo $productHtml;
+        exit;
+    }
+} catch (PDOException $e) {
+    echo "Błąd połączenia z bazą danych: " . $e->getMessage();
+    exit;
+}
 ?>

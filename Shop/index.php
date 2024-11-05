@@ -1,5 +1,5 @@
 <?php
-include("connect.php");
+include("connect.php")
 ?>
 
 <!DOCTYPE html>
@@ -48,19 +48,24 @@ include("connect.php");
             </div>
         </div>
         <div id="categories">
-            <ul>
-                <li><a href="#" class="category-link" data-id="1">Telefony</a></li>
-                <li><a href="#" class="category-link" data-id="2">Smartwatche</a></li>
-                <li><a href="#" class="category-link" data-id="3">Laptopy</a></li>
-                <li><a href="#" class="category-link" data-id="4">Telewizory</a></li>
-                <li><a href="#" class="category-link" data-id="5">Myszki i Klawiatury</a></li>
-                <li><a href="#" class="category-link" data-id="6">Monitory</a></li>
-                <li><a href="#" class="category-link highlight" data-id="7">Promocje</a></li>
-            </ul>
-        </div>
+    <ul>
+        <li><a href="#" class="category-link" data-category="smartfony">Telefony</a></li>
+        <li><a href="#" class="category-link" data-category="smartwatche">Smartwatche</a></li>
+        <li><a href="#" class="category-link" data-category="laptopy">Laptopy</a></li>
+        <li><a href="#" class="category-link" data-category="telewizory">Telewizory</a></li>
+        <li><a href="#" class="category-link" data-category="myszki_i_klawiatury">Myszki i Klawiatury</a></li>
+        <li><a href="#" class="category-link" data-category="monitory">Monitory</a></li>
+        <li><a href="#" class="category-link highlight" data-category="promocje">Promocje</a></li>
+    </ul>
+</div>
+
     </header>
     <main>
-        
+        <div class="content">
+    <div class="product-grid">
+            <?= $productHtml ?>
+    </div>
+</div>
     </main>
     <footer>
     <div id="footer-container">
@@ -146,5 +151,8 @@ include("connect.php");
             </div>
         </div>
     </div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
