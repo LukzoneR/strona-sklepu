@@ -384,3 +384,150 @@ button:hover {
     transition: max-height 0.3s ease-in-out;
     overflow: hidden;
 }
+
+footer {
+    background-color: var(--light-gray);
+    padding: 20px 150px;
+}
+
+#footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#footer-links, #footer-contact, #newsletter-section {
+    flex: 1;
+    margin: 0 10px;
+}
+
+#footer-links h4, #footer-contact h4, .newsletter-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #000000;
+}
+
+#footer-links ul, #footer-contact ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#footer-links li, #footer-contact li {
+    margin: 25px 0;
+    margin-left: 0px;
+}
+
+.contact-icons {
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+
+.contact-item img {
+    width: 24px;
+    height: auto;
+    margin-right: 10px;
+}
+
+#footer-links a, #footer-contact a {
+    color: var(--dark-gray);
+}
+
+#footer-links a:hover, #footer-contact a:hover {
+    text-decoration: underline;
+}
+
+.newsletter-section {
+    margin-top: 20px;
+}
+
+.newsletter-title {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter-form input[type="email"] {
+    padding: 10px 15px;
+    border: 1px solid var(--light-gray);
+    border-radius: 25px 0 0 25px;
+    outline: none;
+    flex: 1;
+    height: 40px;
+    transition: border-color 0.3s ease;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: var(--dark-gray);
+    opacity: 0.6;
+}
+
+.newsletter-form input[type="email"]:focus {
+    border-color: var(--primary-color);
+}
+
+.newsletter-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    background-color: var(--primary-color);
+    color: white;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: -1px;
+    flex: 0 0 120px;
+}
+
+.newsletter-form button:hover {
+    background-color: var(--secondary-color);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.copyrights {
+    color: var(--dark-gray);
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+    margin-top: 15px;
+    position: relative;
+    flex: 1;
+}
+
+.social-media {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.social-media a {
+    margin-left: 15px;
+}
+
+.social-media img {
+    width: 24px;
+    height: auto;
+}
+

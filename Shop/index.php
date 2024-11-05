@@ -63,9 +63,46 @@ include("connect.php");
         
     </main>
     <footer>
-        <div id="contact">
-            
+    <div id="footer-container">
+        <div id="footer-links">
+            <h4>Informacje</h4>
+            <ul>
+                <li><a href="#">O nas</a></li>
+                <li><a href="#">Polityka prywatności</a></li>
+                <li><a href="#">Warunki zakupu</a></li>
+            </ul>
         </div>
+        <div id="footer-contact">
+        <h4>Kontakt</h4>
+            <div class="contact-icons">
+                <a href="mailto:kontakt@twojastrona.pl" class="contact-item">
+                    <img src="./icons/mail.png" alt="Email">
+                    kontakt@twojastrona.pl
+                </a>
+                <a href="tel:123-456-789" class="contact-item">
+                    <img src="./icons/phone.png" alt="Telefon">
+                    +48 123-456-789
+                </a>
+            </div>
+        </div>
+        <div id="newsletter-section">
+            <h4 class="newsletter-title">Zapisz się do newslettera</h4>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Wpisz swój email" required>
+                <button type="button">Zapisz się</button>
+            </div>
+        </div>
+    </div>
+    <div id="footer-bottom">
+        <div class="social-media">
+            <a href="#"><img src="./icons/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="./icons/tiktok.png" alt="Tik-tok"></a>
+            <a href="#"><img src="./icons/instagram.png" alt="Instagram"></a>
+            <a href="https://www.youtube.com/watch?v=233g2QVTSp8"><img src="./icons/youtube.png" alt="Youtube"></a>
+        </div>
+        <div class="copyrights"> © 2024 TechMart. Wszelkie prawa zastrzeżone.
+        </div>
+    </div>
     </footer>
 
     
