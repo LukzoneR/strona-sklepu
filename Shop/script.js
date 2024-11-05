@@ -85,9 +85,3 @@ function checkPasswordStrength() {
     }
 }
 
-window.onclick = function(event) {
-    const modal = document.getElementById("login-modal");
-    if (event.target === modal) {
-        closeModal();
-    }
-}
