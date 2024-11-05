@@ -26,7 +26,7 @@ function toggleForms() {
         registrationForm.style.display = "block";
         title.innerText = "Rejestracja";
         toggleLink.innerText = "Masz już konto? Zaloguj się";
-        requirements.style.maxHeight = requirements.scrollHeight + "px"; // Ustaw wysokość na max
+        requirements.style.maxHeight = requirements.scrollHeight + "px";
     }
 }
 
