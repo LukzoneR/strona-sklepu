@@ -63,7 +63,14 @@ include("connect.php")
     <main>
         <div class="content">
     <div class="product-grid">
-            <?= $productHtml ?>
+    <?php
+            // Produkty pojawią się tylko po kliknięciu w kategorię
+            if (isset($productHtml) && !empty($productHtml)) {
+                echo $productHtml;  // Wyświetlamy produkty tylko, jeśli kategoria jest ustawiona
+            } else {
+                echo "<p>Wybierz kategorię, aby zobaczyć produkty.</p>"; // Komunikat na stronie głównej
+            }
+        ?>
     </div>
 </div>
     </main>
