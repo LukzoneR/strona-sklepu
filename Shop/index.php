@@ -49,26 +49,24 @@ include("connect.php")
             </div>
         </div>
         <div id="categories">
-    <ul>
-        <li><a href="#" class="category-link" data-category="smartfony">Telefony</a></li>
-        <li><a href="#" class="category-link" data-category="smartwatche">Smartwatche</a></li>
-        <li><a href="#" class="category-link" data-category="laptopy">Laptopy</a></li>
-        <li><a href="#" class="category-link" data-category="telewizory">Telewizory</a></li>
-        <li><a href="#" class="category-link" data-category="myszki_i_klawiatury">Myszki i Klawiatury</a></li>
-        <li><a href="#" class="category-link" data-category="monitory">Monitory</a></li>
-        <li><a href="#" class="category-link highlight" data-category="promocje">Promocje</a></li>
-    </ul>
-</div>
+            <ul>
+                <li><a href="#" class="category-link" data-category="smartfony">Telefony</a></li>
+                <li><a href="#" class="category-link" data-category="smartwatche">Smartwatche</a></li>
+                <li><a href="#" class="category-link" data-category="laptopy">Laptopy</a></li>
+                <li><a href="#" class="category-link" data-category="telewizory">Telewizory</a></li>
+                <li><a href="#" class="category-link" data-category="myszki_i_klawiatury">Myszki i Klawiatury</a></li>
+                <li><a href="#" class="category-link" data-category="monitory">Monitory</a></li>
+                <li><a href="#" class="category-link highlight" data-category="promocje">Promocje</a></li>
+            </ul>
+        </div>
 
     </header>
     <main>
     <div class="swiper-container">
     <div class="swiper-wrapper">
-        <!-- Slajd 1 -->
         <div class="swiper-slide">
             <img src="images/baner numia.png" alt="Baner 1">
         </div>
-        <!-- Slajd 2 -->
         <div class="swiper-slide">
             <img src="images/baner samsung.png" alt="Baner 2">
         </div>
@@ -80,19 +78,12 @@ include("connect.php")
     
     <div class="swiper-pagination"></div>
 </div>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script>
-   
-
-
-
-    </script>
+    
     <div class="product-grid">
-    <?php
-            // Produkty pojawią się tylko po kliknięciu w kategorię
+        <?php
             if (isset($productHtml) && !empty($productHtml)) {
-                echo $productHtml;  // Wyświetlamy produkty tylko, jeśli kategoria jest ustawiona
+                echo $productHtml;
             }
         ?>
     </div>

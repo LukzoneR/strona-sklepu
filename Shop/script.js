@@ -111,9 +111,10 @@ var swiper = new Swiper('.swiper-container', {
     slidesPerView: 1, // Jeden slajd na raz
     spaceBetween: 0, // Brak przestrzeni między slajdami
     autoplay: {
-        delay: 5000, // Przewijanie co 3 sekundy
+        delay: 5000, // Przewijanie co 5 sekund
         disableOnInteraction: false, // Utrzymanie autoplay po interakcji użytkownika
     },
+    speed: 700, // Prędkość animacji przejścia między slajdami (600 ms)
     effect: 'slide', // Efekt przejścia - przesunięcie
     navigation: {
         nextEl: '.swiper-button-next', // Przycisk do przejścia do następnego slajdu

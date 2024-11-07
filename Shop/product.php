@@ -7,7 +7,7 @@ $pass = '';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Pobranie ID produktu z URL
+
 $productId = isset($_GET['id']) ? $_GET['id'] : null;
 $selectedCategory = isset($_GET['category']) ? $_GET['category'] : null;
 
@@ -20,13 +20,13 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Pobranie szczegółów produktu na podstawie ID i kategorii
-    $query = "SELECT id, marka, model, cena, photo FROM " . $selectedCategory . " WHERE id = :id";
+    
+    $query = "SELECT id, marka, model, cena, photo, opis FROM " . $selectedCategory . " WHERE id = :id";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':id', $productId, PDO::PARAM_INT);
     $stmt->execute();
 
-    // Pobranie danych produktu
+    
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$product) {
@@ -58,7 +58,7 @@ try {
             <div class="product-info">
                 <p><strong>Cena: </strong><?php echo htmlspecialchars($product['cena']); ?> PLN</p>
                 <p><strong>Opis: </strong><?php echo nl2br(htmlspecialchars($product['opis'])); ?></p>
-                <!-- Możesz dodać więcej informacji o produkcie tutaj -->
+                
             </div>
         </div>
         <a href="index.php" class="back-button">Wróć do kategorii</a>

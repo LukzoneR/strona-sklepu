@@ -662,6 +662,13 @@ footer {
     right: 20px; /* Odstęp od prawej krawędzi */
 }
 
+
 .swiper-button-prev {
     left: 20px; /* Odstęp od lewej krawędzi */
+}
+
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    color: black;
+    transition: 0.7s;
 }
