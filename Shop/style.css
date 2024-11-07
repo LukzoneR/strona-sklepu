@@ -533,9 +533,6 @@ footer {
     height: auto;
 }
 
-#categories {
-    margin-bottom: 40px;
-}
 
 footer {
     margin-top: 40px;
@@ -610,10 +607,61 @@ footer {
     color: #E53935;
     font-size: 18px;
     margin-top: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     transition: color 0.3s ease;
 }
 
 .product-card:hover .price {
     color: #d32f2f;
+}
+
+
+
+.swiper-container {
+    width: 100%; /* Możesz zmienić wysokość według potrzeb */
+    position: relative;
+    overflow: hidden; /* Ukrywa wszystko poza kontenerem */
+    margin-bottom: 30px;
+}
+
+/* Stylizacja slajdów */
+.swiper-slide {
+    width: 100%; /* Pełna szerokość slajdu */
+    height: 100%; /* Pełna wysokość kontenera */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dopasowanie obrazów do kontenera */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Dopasowanie obrazu bez zniekształcania */
+}
+
+/* Stylizacja przycisków (strzałek) */
+.swiper-button-next, .swiper-button-prev {
+    
+    color: lightblue; /* Biały kolor strzałek */
+    font-size: 30px; /* Rozmiar strzałek */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 40px; /* Szerokość przycisku */
+    height: 40px; /* Wysokość przycisku */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Zaokrąglone rogi */
+    transition: background-color 0.3s ease; /* Efekt zmiany koloru tła po najechaniu */
+}
+
+.swiper-button-next {
+    right: 20px; /* Odstęp od prawej krawędzi */
+}
+
+.swiper-button-prev {
+    left: 20px; /* Odstęp od lewej krawędzi */
 }

@@ -104,3 +104,23 @@ document.querySelectorAll('.category-link').forEach(link => {
     })
 })
 
+
+//Slider banera
+var swiper = new Swiper('.swiper-container', {
+    loop: true, // Slider w pętli
+    slidesPerView: 1, // Jeden slajd na raz
+    spaceBetween: 0, // Brak przestrzeni między slajdami
+    autoplay: {
+        delay: 5000, // Przewijanie co 3 sekundy
+        disableOnInteraction: false, // Utrzymanie autoplay po interakcji użytkownika
+    },
+    effect: 'slide', // Efekt przejścia - przesunięcie
+    navigation: {
+        nextEl: '.swiper-button-next', // Przycisk do przejścia do następnego slajdu
+        prevEl: '.swiper-button-prev', // Przycisk do przejścia do poprzedniego slajdu
+    },
+    pagination: {
+        el: '.swiper-pagination', // Kropki do paginacji
+        clickable: true, // Możliwość kliknięcia w kropki
+    },
+});

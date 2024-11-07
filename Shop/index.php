@@ -10,6 +10,7 @@ include("connect.php")
     <title>Techmart</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
 <body>
     <header>
@@ -61,14 +62,37 @@ include("connect.php")
 
     </header>
     <main>
-        <div class="content">
+    <div class="swiper-container">
+    <div class="swiper-wrapper">
+        <!-- Slajd 1 -->
+        <div class="swiper-slide">
+            <img src="images/baner numia.png" alt="Baner 1">
+        </div>
+        <!-- Slajd 2 -->
+        <div class="swiper-slide">
+            <img src="images/baner samsung.png" alt="Baner 2">
+        </div>
+    </div>
+    
+    <div class="swiper-button-next"></div>
+    
+    <div class="swiper-button-prev"></div>
+    
+    <div class="swiper-pagination"></div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+   
+
+
+
+    </script>
     <div class="product-grid">
     <?php
             // Produkty pojawią się tylko po kliknięciu w kategorię
             if (isset($productHtml) && !empty($productHtml)) {
                 echo $productHtml;  // Wyświetlamy produkty tylko, jeśli kategoria jest ustawiona
-            } else {
-                echo "<p>Wybierz kategorię, aby zobaczyć produkty.</p>"; // Komunikat na stronie głównej
             }
         ?>
     </div>

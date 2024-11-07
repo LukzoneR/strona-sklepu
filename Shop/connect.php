@@ -41,7 +41,7 @@ try {
             <a href="' . $productLink . '" class="product-card">
                 <div class="product-card-content">
                     <img src="' . htmlspecialchars($product['photo']) . '" alt="Zdjęcie produktu">
-                    <h3>' . htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']) . '</h3>
+                    <h3 style="color:black">' . htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']) . '</h3>
                     <p class="price">Cena: ' . htmlspecialchars($product['cena']) . ' PLN</p>
                 </div>
             </a>';

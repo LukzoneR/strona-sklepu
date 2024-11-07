@@ -174,7 +174,7 @@ INSERT INTO `myszki_i_klawiatury` (`id`, `typ`, `marka`, `model`, `rodzaj_polacz
 (16, 'Mysz', 'Logitech', 'MX Master 3', 'Bezprzewodowe', 1, 2, '300zł', 'photos/myszki_klawiatury/mysz9.png', 1),
 (17, 'Klawiatura', 'HyperX', 'Alloy FPS Pro', 'Przewodowe', 1, 4, '700zł', 'photos/myszki_klawiatury/klawiatura8.png', 0),
 (18, 'Mysz', 'BenQ', 'Zowie S2', 'Przewodowe', 0, 0, '400zł', 'photos/myszki_klawiatury/mysz10.png', 0),
-(19, 'Klawiatura', 'Logitech', 'K120', 'Przewodowe', 0, 0, '150zł', 'photos/myszki_klawiatury/klawiatura10.png', 1),
+(19, 'Klawiatura', 'Logitech', 'K120', 'Przewodowe', 0, 0, '150zł', 'photos/myszki_klawiatury/klawiatura9.png', 1),
 (20, 'Mysz', 'Razer', 'Naga X', 'Bezprzewodowe', 1, 16, '300zł', 'photos/myszki_klawiatury/mysz11.png', 1);
 
 -- --------------------------------------------------------
