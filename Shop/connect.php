@@ -36,7 +36,7 @@ try {
                 <div class="product-card-content">
                     <img src="' . htmlspecialchars($product['photo']) . '" alt="Zdjęcie produktu">
                     <h3 style="color:black">' . htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']) . '</h3>
-                    <p class="price">Cena: ' . htmlspecialchars($product['cena']) . ' PLN</p>
+                    <p class="price">Cena: ' . htmlspecialchars($product['cena']) . '</p>
                 </div>
             </a>';
         }

@@ -71,13 +71,13 @@ include("connect.php")
             <img src="images/baner samsung.png" alt="Baner 2">
         </div>
         <div class="swiper-slide">
-            <img src="images/baner hp.png" alt="Baner 2">
+            <img src="images/baner mac.png" alt="Baner 2">
         </div>
         <div class="swiper-slide">
-            <img src="images/baner nvidia.png" alt="Baner 2">
+            <img src="images/baner telewizor.png" alt="Baner 2">
         </div>
         <div class="swiper-slide">
-            <img src="images/baner intel.png" alt="Baner 2">
+            <img src="images/baner xiaomi.png" alt="Baner 2">
         </div>
     </div>
     
