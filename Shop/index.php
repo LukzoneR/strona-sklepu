@@ -111,9 +111,9 @@ include("connect.php")
         <div id="footer-contact">
         <h4>Kontakt</h4>
             <div class="contact-icons">
-                <a href="mailto:kontakt@twojastrona.pl" class="contact-item">
+                <a href="mailto:kontakt@TechMart.pl" class="contact-item">
                     <img src="./icons/mail.png" alt="Email">
-                    kontakt@twojastrona.pl
+                    kontakt@TechMart.pl
                 </a>
                 <a href="tel:123-456-789" class="contact-item">
                     <img src="./icons/phone.png" alt="Telefon">
