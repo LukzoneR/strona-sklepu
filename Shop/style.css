@@ -553,6 +553,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
@@ -560,6 +561,8 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     text-decoration: none;
+    overflow: hidden;
+    position: relative;
 }
 
 .product-card:hover {
@@ -570,7 +573,7 @@ footer {
 
 .product-card img {
     width: 100%;
-    height: auto;
+    height: 180px;
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 15px;
@@ -606,14 +609,18 @@ footer {
     font-weight: bold;
     color: #E53935;
     font-size: 18px;
-    margin-top: 15px;
-    margin-bottom: 15px;
     transition: color 0.3s ease;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .product-card:hover .price {
     color: #d32f2f;
 }
+
+
 
 
 
