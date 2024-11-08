@@ -70,6 +70,15 @@ include("connect.php")
         <div class="swiper-slide">
             <img src="images/baner samsung.png" alt="Baner 2">
         </div>
+        <div class="swiper-slide">
+            <img src="images/baner hp.png" alt="Baner 2">
+        </div>
+        <div class="swiper-slide">
+            <img src="images/baner nvidia.png" alt="Baner 2">
+        </div>
+        <div class="swiper-slide">
+            <img src="images/baner intel.png" alt="Baner 2">
+        </div>
     </div>
     
     <div class="swiper-button-next"></div>

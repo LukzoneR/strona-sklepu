@@ -107,21 +107,21 @@ document.querySelectorAll('.category-link').forEach(link => {
 
 //Slider banera
 var swiper = new Swiper('.swiper-container', {
-    loop: true, // Slider w pętli
-    slidesPerView: 1, // Jeden slajd na raz
-    spaceBetween: 0, // Brak przestrzeni między slajdami
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 0,
     autoplay: {
-        delay: 5000, // Przewijanie co 5 sekund
-        disableOnInteraction: false, // Utrzymanie autoplay po interakcji użytkownika
+        delay: 5000,
+        disableOnInteraction: false,
     },
-    speed: 700, // Prędkość animacji przejścia między slajdami (600 ms)
-    effect: 'slide', // Efekt przejścia - przesunięcie
+    speed: 700,
+    effect: 'slide',
     navigation: {
-        nextEl: '.swiper-button-next', // Przycisk do przejścia do następnego slajdu
-        prevEl: '.swiper-button-prev', // Przycisk do przejścia do poprzedniego slajdu
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
     },
     pagination: {
-        el: '.swiper-pagination', // Kropki do paginacji
-        clickable: true, // Możliwość kliknięcia w kropki
+        el: '.swiper-pagination',
+        clickable: true,
     },
 });

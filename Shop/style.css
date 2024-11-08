@@ -618,57 +618,81 @@ footer {
 
 
 .swiper-container {
-    width: 100%; /* Możesz zmienić wysokość według potrzeb */
+    width: 100%;
     position: relative;
-    overflow: hidden; /* Ukrywa wszystko poza kontenerem */
+    overflow: hidden;
     margin-bottom: 30px;
 }
 
-/* Stylizacja slajdów */
+
 .swiper-slide {
-    width: 100%; /* Pełna szerokość slajdu */
-    height: 100%; /* Pełna wysokość kontenera */
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Dopasowanie obrazów do kontenera */
+
 .swiper-slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Dopasowanie obrazu bez zniekształcania */
+    object-fit: contain;
 }
 
-/* Stylizacja przycisków (strzałek) */
+
 .swiper-button-next, .swiper-button-prev {
     
-    color: lightblue; /* Biały kolor strzałek */
-    font-size: 30px; /* Rozmiar strzałek */
+    color: lightblue;
+    font-size: 30px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    width: 40px; /* Szerokość przycisku */
-    height: 40px; /* Wysokość przycisku */
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%; /* Zaokrąglone rogi */
-    transition: background-color 0.3s ease; /* Efekt zmiany koloru tła po najechaniu */
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
 }
 
 .swiper-button-next {
-    right: 20px; /* Odstęp od prawej krawędzi */
+    right: 20px; 
 }
 
 
 .swiper-button-prev {
-    left: 20px; /* Odstęp od lewej krawędzi */
+    left: 20px;
 }
-
 
 .swiper-button-next:hover, .swiper-button-prev:hover {
     color: black;
     transition: 0.7s;
+}
+
+
+.swiper-pagination {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    text-align: center;
+    z-index: 10;
+}
+
+
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: rgb(255, 0, 0) !important;
+    margin: 0 5px;
+    border-radius: 50%;
+}
+
+
+.swiper-pagination-bullet-active {
+    background-color: #ff017d !important;
 }
