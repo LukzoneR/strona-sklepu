@@ -314,6 +314,22 @@ h2 {
     background-color: #f0f9ff;
 }
 
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
 button {
     background-color: var(--primary-color);
     color: white;

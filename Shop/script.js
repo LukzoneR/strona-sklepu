@@ -86,6 +86,37 @@ function checkPasswordStrength() {
 }
 
 
+// Funkcja do pokazywania/ukrywania hasła w formularzu logowania
+document.getElementById('toggle-password').addEventListener('click', function() {
+    const passwordField = document.getElementById('password');
+    const passwordIcon = document.getElementById('toggle-password');
+
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        passwordIcon.src = 'icons/eye.png';
+    } else {
+        passwordField.type = 'password';
+        passwordIcon.src = 'icons/eye-crossed.png';
+    }
+});
+
+
+
+// Funkcja do pokazywania/ukrywania hasła w formularzu rejestracji
+document.getElementById('toggle-reg-password').addEventListener('click', function() {
+    const regPasswordField = document.getElementById('reg-password');
+    const regPasswordIcon = document.getElementById('toggle-reg-password');
+
+    if (regPasswordField.type === 'password') {
+        regPasswordField.type = 'text';
+        regPasswordIcon.src = 'icons/eye.png';
+    } else {
+        regPasswordField.type = 'password';
+        regPasswordIcon.src = 'icons/eye-crossed.png';
+    }
+});
+
+
 
 //Ładowanie produktów według kategorii
 document.querySelectorAll('.category-link').forEach(link => {

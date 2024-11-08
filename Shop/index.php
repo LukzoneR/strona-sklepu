@@ -154,10 +154,13 @@ include("connect.php")
                         <label for="username">Nazwa użytkownika:</label>
                         <input type="text" id="username" name="username" required autocomplete="off">
                     </div>
-                    <div class="form-group">
-                        <label for="password">Hasło:</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
+            <div class="form-group">
+                <label for="password">Hasło:</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+                    <img src="icons/eye-crossed.png" alt="Pokaż hasło" id="toggle-password" class="eye-icon">
+                </div>
+            </div>
                     <button type="submit">Zaloguj się</button>
                 </form>
                 <form id="registration-form" action="/register" method="POST" style="display: none;">
@@ -167,14 +170,17 @@ include("connect.php")
                     </div>
                     <div class="form-group">
                         <label for="reg-password">Hasło:</label>
-                        <input type="password" id="reg-password" name="password" required oninput="checkPasswordStrength()">
-                        <div class="password-strength" id="password-strength"></div>
-                        <div id="requirements">
-                            <div id="length" class="requirement">Minimum 8 znaków</div>
-                            <div id="uppercase" class="requirement">Jedna wielka litera</div>
-                            <div id="number" class="requirement">Jedna cyfra</div>
-                            <div id="special" class="requirement">Jedno specjalne znaki</div>
-                        </div>
+                            <div class="password-container">
+                                <input type="password" id="reg-password" name="password" required oninput="checkPasswordStrength()">
+                                <img src="icons/eye-crossed.png" alt="Pokaż hasło" id="toggle-reg-password" class="eye-icon">
+                            </div>
+                            <div class="password-strength" id="password-strength"></div>
+                            <div id="requirements">
+                                <div id="length" class="requirement">Minimum 8 znaków</div>
+                                <div id="uppercase" class="requirement">Jedna wielka litera</div>
+                                <div id="number" class="requirement">Jedna cyfra</div>
+                                <div id="special" class="requirement">Jedno specjalne znaki</div>
+                            </div>
                     </div>
                     <button type="submit">Zarejestruj się</button>
                 </form>
