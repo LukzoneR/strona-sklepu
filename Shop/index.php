@@ -71,13 +71,13 @@ include("connect.php")
             <img src="images/baner samsung.png" alt="Baner 2">
         </div>
         <div class="swiper-slide">
-            <img src="images/baner mac.png" alt="Baner 2">
+            <img src="images/baner mac.png" alt="Baner 3">
         </div>
         <div class="swiper-slide">
-            <img src="images/baner telewizor.png" alt="Baner 2">
+            <img src="images/baner telewizor.png" alt="Baner 4">
         </div>
         <div class="swiper-slide">
-            <img src="images/baner xiaomi.png" alt="Baner 2">
+            <img src="images/baner xiaomi.png" alt="Baner 5">
         </div>
     </div>
     
@@ -86,26 +86,31 @@ include("connect.php")
     <div class="swiper-button-prev"></div>
     
     <div class="swiper-pagination"></div>
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    
-    <div class="product-grid">
-        <?php
-            if (isset($productHtml) && !empty($productHtml)) {
-                echo $productHtml;
-            }
-        ?>
     </div>
-</div>
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    
+        <div class="product-grid">
+            <?php
+                if (isset($productHtml) && !empty($productHtml)) {
+                    echo $productHtml;
+                }
+            ?>
+        </div>
+    </div>
+
+    <div id="swipe-up" onclick="scrollToTop()">
+        <img src="./icons/up.png" alt="Swipe Up" />
+    </div>
+
     </main>
     <footer>
     <div id="footer-container">
         <div id="footer-links">
             <h4>Informacje</h4>
             <ul>
-                <li><a href="#">O nas</a></li>
-                <li><a href="#">Polityka prywatności</a></li>
-                <li><a href="#">Warunki zakupu</a></li>
+                <li><a href=".\about.php">O nas</a></li>
+                <li><a href=".\privacy policy.php">Polityka prywatności</a></li>
+                <li><a href=".\terms.php">Warunki zakupu</a></li>
             </ul>
         </div>
         <div id="footer-contact">
@@ -115,9 +120,9 @@ include("connect.php")
                     <img src="./icons/mail.png" alt="Email">
                     kontakt@TechMart.pl
                 </a>
-                <a href="tel:123-456-789" class="contact-item">
+                <a href="tel:392-267-921" class="contact-item">
                     <img src="./icons/phone.png" alt="Telefon">
-                    +48 123-456-789
+                    +48 392-267-921
                 </a>
             </div>
         </div>

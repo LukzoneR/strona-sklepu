@@ -425,13 +425,13 @@ footer {
     color: #000000;
 }
 
-#footer-links ul, #footer-contact ul {
+#footer-links ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-#footer-links li, #footer-contact li {
+#footer-links li {
     margin: 25px 0;
     margin-left: 0px;
 }
@@ -445,11 +445,14 @@ footer {
 }
 
 .contact-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    margin: 10px 0;
     color: var(--dark-gray);
     text-decoration: none;
+    padding: 0;
+    margin: 10px 0;
+    width: auto;
+    max-width: fit-content;
 }
 
 .contact-item img {
@@ -460,6 +463,7 @@ footer {
 
 #footer-links a, #footer-contact a {
     color: var(--dark-gray);
+    text-decoration: none; 
 }
 
 #footer-links a:hover, #footer-contact a:hover {
@@ -549,7 +553,6 @@ footer {
     height: auto;
 }
 
-
 footer {
     margin-top: 40px;
 }
@@ -636,17 +639,12 @@ footer {
     color: #d32f2f;
 }
 
-
-
-
-
 .swiper-container {
     width: 100%;
     position: relative;
     overflow: hidden;
     margin-bottom: 30px;
 }
-
 
 .swiper-slide {
     width: 100%;
@@ -656,13 +654,11 @@ footer {
     align-items: center;
 }
 
-
 .swiper-slide img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
-
 
 .swiper-button-next, .swiper-button-prev {
     
@@ -685,7 +681,6 @@ footer {
     right: 20px; 
 }
 
-
 .swiper-button-prev {
     left: 20px;
 }
@@ -694,7 +689,6 @@ footer {
     color: black;
     transition: 0.7s;
 }
-
 
 .swiper-pagination {
     position: absolute;
@@ -706,7 +700,6 @@ footer {
     z-index: 10;
 }
 
-
 .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
@@ -715,7 +708,38 @@ footer {
     border-radius: 50%;
 }
 
-
 .swiper-pagination-bullet-active {
     background-color: #ff017d !important;
 }
+
+#swipe-up {
+    position: fixed;
+    right: -60px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(0);
+    transition: right 0.5s ease, opacity 0.5s ease;
+}
+
+#swipe-up img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    filter: invert(1);
+}
+
+#swipe-up.show {
+    right: 20px;
+    opacity: 1;
+}
+
