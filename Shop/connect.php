@@ -1,11 +1,5 @@
 <?php
-$host = 'localhost';
-$dbname = 'sklep';
-$user = 'root';
-$pass = '';
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+include("db_connect.php");
 
 $isAjaxRequest = isset($_GET['ajax']) && $_GET['ajax'] == '1';
 

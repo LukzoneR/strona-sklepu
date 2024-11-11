@@ -180,3 +180,35 @@ window.addEventListener("scroll", function() {
         swipeUpButton.style.bottom = "20px";
     }
 });
+
+
+//wyświetlanie się koszyka w stylu pop up
+function closeCartModal() {
+    const modal = document.getElementById("cart-modal");
+    modal.classList.add("fade-out");
+    setTimeout(() => {
+        modal.style.display = "none";
+        modal.classList.remove("fade-out");
+    }, 500);
+}
+
+function toggleCartSections() {
+    const cartItems = document.getElementById("cart-items");
+    const cartSummary = document.getElementById("cart-summary");
+    const cartTitle = document.getElementById("cart-title");
+    const toggleLink = document.getElementById("cart-toggle-link");
+
+    const isCartItemsVisible = cartItems.style.display !== "none";
+
+    if (isCartItemsVisible) {
+        cartItems.style.display = "none";
+        cartSummary.style.display = "block";
+        cartTitle.innerText = "Podsumowanie Zakupów";
+        toggleLink.innerText = "Wróć do koszyka";
+    } else {
+        cartItems.style.display = "block";
+        cartSummary.style.display = "none";
+        cartTitle.innerText = "Twój Koszyk";
+        toggleLink.innerText = "Przejdź do podsumowania";
+    }
+}

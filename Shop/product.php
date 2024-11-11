@@ -1,43 +1,36 @@
 <?php
-$host = 'localhost';
-$dbname = 'sklep';
-$user = 'root';
-$pass = '';
+    include("db_connect.php");
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+    $productId = isset($_GET['id']) ? $_GET['id'] : null;
+    $selectedCategory = isset($_GET['category']) ? $_GET['category'] : null;
 
-
-$productId = isset($_GET['id']) ? $_GET['id'] : null;
-$selectedCategory = isset($_GET['category']) ? $_GET['category'] : null;
-
-if (!$productId || !$selectedCategory) {
-    echo "Nie znaleziono produktu!";
-    exit;
-}
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    
-    $query = "SELECT id, marka, model, cena, photo, opis FROM " . $selectedCategory . " WHERE id = :id";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':id', $productId, PDO::PARAM_INT);
-    $stmt->execute();
-
-    
-    $product = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$product) {
-        echo "Nie znaleziono produktu w tej kategorii.";
+    if (!$productId || !$selectedCategory) {
+        echo "Nie znaleziono produktu!";
         exit;
     }
 
-} catch (PDOException $e) {
-    echo "Błąd połączenia z bazą danych: " . $e->getMessage();
-    exit;
-}
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        
+        $query = "SELECT id, marka, model, cena, photo, opis FROM " . $selectedCategory . " WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':id', $productId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$product) {
+            echo "Nie znaleziono produktu w tej kategorii.";
+            exit;
+        }
+
+    } catch (PDOException $e) {
+        echo "Błąd połączenia z bazą danych: " . $e->getMessage();
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +55,11 @@ try {
             </div>
         </div>
         <a href="index.php" class="back-button">Wróć do kategorii</a>
+        <form action="add_to_cart.php" method="POST">
+            <input type="hidden" name="produkt_id" value="<?php echo $productId?>">
+            <input type="hidden" name="kategoria" value="<?php echo $selectedCategory?>">
+            <button type="submit">Dodaj do koszyka</button>
+        </form>
     </div>
 </body>
 </html>
