@@ -14,7 +14,7 @@ $produkt_id = $_POST['produkt_id'];
 $kategoria = $_POST['kategoria'];
 $ilosc = 1;
 
-// Sprawdzenie, czy koszyk istnieje
+
 $koszyk_id = null;
 $query = "SELECT koszyk_id FROM koszyki WHERE uzytkownik_id = ?";
 $stmt = $conn->prepare($query);
@@ -24,7 +24,7 @@ $stmt->bind_result($koszyk_id);
 $stmt->fetch();
 $stmt->close();
 
-// Jeśli koszyk nie istnieje, utwórz nowy
+
 //if (!$koszyk_id) {
     $query = "INSERT INTO koszyki (uzytkownik_id) VALUES (?)";
     $stmt = $conn->prepare($query);
@@ -34,7 +34,7 @@ $stmt->close();
     $stmt->close();
 //}
 
-// Dodanie produktu do koszyka
+
 $query = "INSERT INTO koszyk_produkty (koszyk_id, produkt_id, kategoria, ilosc) 
           VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($query);

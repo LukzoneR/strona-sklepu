@@ -28,7 +28,7 @@ include("connect.php");
         </div>
         <div id="midbar">
             <div id="logo" onclick="window.location.href='./index.php'">
-                <img src="./images/logos/RefinedTechMartLogo.svg" alt="Logo strony">
+                <img src="./images/logos/techmart.svg" alt="Logo strony">
             </div>
             <div id="searchbar">
                 <form action="/search" method="GET" class="formularz">

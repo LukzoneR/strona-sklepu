@@ -8,7 +8,6 @@
         
         $result = mysqli_query($conn, $sql);
         
-        
         if(!$result){
                 echo "Błąd odczytu: ". mysqli_error($conn);
                 exit();
