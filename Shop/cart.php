@@ -113,7 +113,7 @@
                             <p>Model: <?php echo $item['model']; ?></p>
                             <p class="product-price">Cena: <?php echo $item['cena']; ?></p>
                             <form id="quantity-form-<?php echo $item['koszyk_id']; ?>" onsubmit="return false;">
-                                <label for="quantity">Ilość:</label>
+                                <label>Ilość:</label>
                                 <input type="number" class="number-input" id="number-input-<?php echo $item['koszyk_id']; ?>" name="quantity"
                                     value="<?php echo $item['ilosc']; ?>" min="1" required
                                     onchange="handleQuantityChange(<?php echo $item['koszyk_id']; ?>, this);">
