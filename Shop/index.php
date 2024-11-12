@@ -51,7 +51,7 @@ include("connect.php");
         </div>
         <div id="categories">
             <ul>
-                <li><a href="" class="category-link" data-category="smartfony">Telefony</a></li>
+                <li><a href="#" class="category-link" data-category="smartfony">Telefony</a></li>
                 <li><a href="#" class="category-link" data-category="smartwatche">Smartwatche</a></li>
                 <li><a href="#" class="category-link" data-category="laptopy">Laptopy</a></li>
                 <li><a href="#" class="category-link" data-category="telewizory">Telewizory</a></li>

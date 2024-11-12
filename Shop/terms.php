@@ -19,8 +19,6 @@ include("connect.php")
             padding: 30px;
             background-color: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            font-family: 'Roboto', sans-serif;
         }
 
         main.terms h2 {
@@ -28,8 +26,8 @@ include("connect.php")
             color: #333;
             margin-top: 0;
             text-align: center;
-            border-bottom: 3px solid #FF017D;
-            padding-bottom: 10px;
+            border-top: 2px solid #ebebeb;
+            padding: 10px 0;
         }
 
         main.terms h3 {
@@ -37,8 +35,8 @@ include("connect.php")
             color: #333;
             margin-top: 30px;
             margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #FF017D;
+            border-top: 2px solid #ebebeb;
+            padding: 10px 0;
         }
 
         main.terms p {
@@ -257,5 +255,33 @@ include("connect.php")
             </div>
         </div>
     </div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        
+        window.addEventListener("scroll", function() {
+            const swipeUpButton = document.getElementById("swipe-up");
+            const footer = document.querySelector("footer");
+            const footerPosition = footer.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+        
+            if (window.scrollY > 100) {
+                swipeUpButton.classList.add("show");
+            } else {
+                swipeUpButton.classList.remove("show");
+            }
+        
+            if (footerPosition < windowHeight) {
+                swipeUpButton.style.bottom = `${windowHeight - footerPosition + 20}px`;
+            } else {
+                swipeUpButton.style.bottom = "20px";
+            }
+        });
+    </script>
+        <div id="swipe-up" onclick="scrollToTop()">
+            <img src="./icons/up.png" alt="Swipe Up" />
+        </div>
 </body>
 </html>

@@ -18,7 +18,6 @@ include("connect.php")
             margin: 30px auto;
             padding: 20px;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
@@ -26,6 +25,7 @@ include("connect.php")
             color: #333;
             font-weight: bold;
            margin-bottom: 15px;
+           text-align: center;
         }
 
         .about >p {
@@ -225,6 +225,32 @@ include("connect.php")
             </div>
         </div>
     </div>
-
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        
+        window.addEventListener("scroll", function() {
+            const swipeUpButton = document.getElementById("swipe-up");
+            const footer = document.querySelector("footer");
+            const footerPosition = footer.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+        
+            if (window.scrollY > 100) {
+                swipeUpButton.classList.add("show");
+            } else {
+                swipeUpButton.classList.remove("show");
+            }
+        
+            if (footerPosition < windowHeight) {
+                swipeUpButton.style.bottom = `${windowHeight - footerPosition + 20}px`;
+            } else {
+                swipeUpButton.style.bottom = "20px";
+            }
+        });
+    </script>
+        <div id="swipe-up" onclick="scrollToTop()">
+            <img src="./icons/up.png" alt="Swipe Up" />
+        </div>
 </body>
 </html>

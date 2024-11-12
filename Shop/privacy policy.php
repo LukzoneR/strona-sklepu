@@ -325,7 +325,35 @@ include("connect.php")
                 }
             });
         });
+
+
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        
+        window.addEventListener("scroll", function() {
+            const swipeUpButton = document.getElementById("swipe-up");
+            const footer = document.querySelector("footer");
+            const footerPosition = footer.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+        
+            if (window.scrollY > 100) {
+                swipeUpButton.classList.add("show");
+            } else {
+                swipeUpButton.classList.remove("show");
+            }
+        
+            if (footerPosition < windowHeight) {
+                swipeUpButton.style.bottom = `${windowHeight - footerPosition + 20}px`;
+            } else {
+                swipeUpButton.style.bottom = "20px";
+            }
+        });
     </script>
+        <div id="swipe-up" onclick="scrollToTop()">
+            <img src="./icons/up.png" alt="Swipe Up" />
+        </div>
 
 </body>
 </html>
