@@ -31,7 +31,7 @@ include("connect.php");
                 <img src="./images/logos/techmart.svg" alt="Logo strony">
             </div>
             <div id="searchbar">
-                <form action="/search" method="GET" class="formularz">
+                <form action="/search" method="GET" class="formularz" autocomplete="off">
                     <input type="text" name="query" placeholder="Szukaj produktów...">
                     <a href="/#">
                         <img src="./icons/search.png" alt="Szukaj" class="zdjecie">

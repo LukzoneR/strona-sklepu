@@ -103,7 +103,7 @@ include("connect.php")
                 <img src="./images/logos/techmart.svg" alt="Logo strony">
             </div>
             <div id="searchbar">
-                <form action="/search" method="GET" class="formularz">
+                <form action="/search" method="GET" class="formularz" autocomplete="off">
                     <input type="text" name="query" placeholder="Szukaj produktów...">
                     <a href="/#">
                         <img src="./icons/search.png" alt="Szukaj" class="zdjecie">
@@ -129,7 +129,7 @@ include("connect.php")
                 <li><a href="index.php?category=telewizory" class="category-link">Telewizory</a></li>
                 <li><a href="index.php?category=myszki_i_klawiatury" class="category-link">Myszki i Klawiatury</a></li>
                 <li><a href="index.php?category=monitory" class="category-link">Monitory</a></li>
-                <li><a href="index.php?category=promocje" class="category-link">Promocje</a></li>
+                <li><a href="index.php?category=promocje" class="category-link highlight">Promocje</a></li>
             </ul>
         </div>
     </header>
