@@ -14,7 +14,7 @@ include("connect.php")
 
     <style>
         main.terms {
-            max-width: 1080px;
+            max-width: 80%;
             margin: 40px auto;
             padding: 30px;
             background-color: #ffffff;
@@ -88,7 +88,7 @@ include("connect.php")
         </div>
         <div id="midbar">
             <div id="logo" onclick="window.location.href='./index.php'">
-                <img src="./images/logos/RefinedTechMartLogo.svg" alt="Logo strony">
+                <img src="./images/logos/techmart.svg" alt="Logo strony">
             </div>
             <div id="searchbar">
                 <form action="/search" method="GET" class="formularz">
@@ -108,6 +108,17 @@ include("connect.php")
                     Koszyk <img src="./icons/cart.png" alt="Koszyk">
                 </a>
             </div>
+        </div>
+        <div id="categories">
+            <ul>
+                <li><a href="index.php?category=smartfony" class="category-link">Telefony</a></li>
+                <li><a href="index.php?category=smartwatche" class="category-link">Smartwatche</a></li>
+                <li><a href="index.php?category=laptopy" class="category-link">Laptopy</a></li>
+                <li><a href="index.php?category=telewizory" class="category-link">Telewizory</a></li>
+                <li><a href="index.php?category=myszki_i_klawiatury" class="category-link">Myszki i Klawiatury</a></li>
+                <li><a href="index.php?category=monitory" class="category-link">Monitory</a></li>
+                <li><a href="index.php?category=promocje" class="category-link">Promocje</a></li>
+            </ul>
         </div>
     </header>
     <main class="terms">

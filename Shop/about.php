@@ -14,7 +14,7 @@ include("connect.php")
 
     <style>
         main {
-            max-width: 1000px;
+            max-width: 80%;
             margin: 30px auto;
             padding: 20px;
             background-color: white;
@@ -28,25 +28,25 @@ include("connect.php")
            margin-bottom: 15px;
         }
 
-        p {
+        .about >p {
             font-size: 18px;
             line-height: 1.6;
             margin-bottom: 15px;
         }
 
-        ul {
+        .about >ul {
             list-style-type: disc;
             margin-left: 30px;
             font-size: 16px;
             margin-bottom: 20px;
         }
 
-        ul li {
+        .about > ul li {
             line-height: 1.6;
             margin-bottom: 10px;
         }
 
-        ul li strong {
+        .about > ul li strong {
             color: #000;
         }
     </style>
@@ -67,7 +67,7 @@ include("connect.php")
         </div>
         <div id="midbar">
             <div id="logo" onclick="window.location.href='./index.php'">
-                <img src="./images/logos/RefinedTechMartLogo.svg" alt="Logo strony">
+                <img src="./images/logos/techmart.svg" alt="Logo strony">
             </div>
             <div id="searchbar">
                 <form action="/search" method="GET" class="formularz">
@@ -88,6 +88,18 @@ include("connect.php")
                 </a>
             </div>
         </div>
+        <div id="categories">
+            <ul>
+                <li><a href="index.php?category=smartfony" class="category-link">Telefony</a></li>
+                <li><a href="index.php?category=smartwatche" class="category-link">Smartwatche</a></li>
+                <li><a href="index.php?category=laptopy" class="category-link">Laptopy</a></li>
+                <li><a href="index.php?category=telewizory" class="category-link">Telewizory</a></li>
+                <li><a href="index.php?category=myszki_i_klawiatury" class="category-link">Myszki i Klawiatury</a></li>
+                <li><a href="index.php?category=monitory" class="category-link">Monitory</a></li>
+                <li><a href="index.php?category=promocje" class="category-link">Promocje</a></li>
+            </ul>
+        </div>
+
     </header>
     <main class="about">
         <h2>Witaj w TechMart!</h2>

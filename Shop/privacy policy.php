@@ -13,15 +13,8 @@ include("connect.php")
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-
         p {
-            color: #111;
+            
             font-size: 18px;
             line-height: 1.8;
             margin-bottom: 20px;
@@ -77,7 +70,7 @@ include("connect.php")
         }
 
         .accordion-content p, .accordion-content ul {
-            color: #6c6c6c;
+            color: black;
             font-size: 16px;
             line-height: 1.6;
             margin: 10px 0;
@@ -107,7 +100,7 @@ include("connect.php")
         </div>
         <div id="midbar">
             <div id="logo" onclick="window.location.href='./index.php'">
-                <img src="./images/logos/RefinedTechMartLogo.svg" alt="Logo strony">
+                <img src="./images/logos/techmart.svg" alt="Logo strony">
             </div>
             <div id="searchbar">
                 <form action="/search" method="GET" class="formularz">
@@ -128,6 +121,17 @@ include("connect.php")
                 </a>
             </div>
         </div>
+        <div id="categories">
+            <ul>
+                <li><a href="index.php?category=smartfony" class="category-link">Telefony</a></li>
+                <li><a href="index.php?category=smartwatche" class="category-link">Smartwatche</a></li>
+                <li><a href="index.php?category=laptopy" class="category-link">Laptopy</a></li>
+                <li><a href="index.php?category=telewizory" class="category-link">Telewizory</a></li>
+                <li><a href="index.php?category=myszki_i_klawiatury" class="category-link">Myszki i Klawiatury</a></li>
+                <li><a href="index.php?category=monitory" class="category-link">Monitory</a></li>
+                <li><a href="index.php?category=promocje" class="category-link">Promocje</a></li>
+            </ul>
+        </div>
     </header>
     <main class="policy">
         <h1>Polityka Prywatności</h1>
@@ -136,7 +140,7 @@ include("connect.php")
         <div class="accordion">
             <div class="accordion-item">
                 <button class="accordion-button">1. Administrator Danych Osobowych</button>
-                <div class="accordion-content">
+                <div class="accordion-content" >
                     <p>Administratorem Twoich danych osobowych jest TechMart, z siedzibą w [adres]. Administrator odpowiada za zapewnienie, że Twoje dane osobowe są przetwarzane zgodnie z obowiązującymi przepisami prawa oraz że wszelkie niezbędne zabezpieczenia techniczne i organizacyjne są wdrożone w celu ochrony Twoich danych.</p>
                     <p>W sprawach związanych z ochroną danych osobowych możesz skontaktować się z nami pod adresem e-mail: kontakt@TechMart.pl lub pisemnie na adres naszej siedziby. Współpracujemy również z inspektorem ochrony danych, który czuwa nad właściwym przetwarzaniem Twoich danych osobowych.</p>
                 </div>
