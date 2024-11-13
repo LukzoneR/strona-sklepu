@@ -39,6 +39,220 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']); ?></title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .product-page {
+    margin: 20px auto; /* Ustawi równy margines nad i pod sekcją produktu */
+    max-width: 1200px; /* Ustawienia szerokości, aby sekcja była czytelna */
+    padding: 20px;
+    background-color: #f5f5f5; /* Jeśli chcesz tło białe */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtelny cień */
+    border-radius: 8px; /* Zaokrąglone rogi */
+}
+
+
+.product-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.product-image {
+    flex: 1;
+    max-width: 500px;
+    margin-right: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+}
+
+.product-info {
+    flex: 1;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-info h1 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+}
+
+.product-price {
+    font-size: 22px;
+    color: #f97316;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.add-to-cart-btn {
+    margin: 20px auto; /* Wyśrodkowanie przycisku */
+    display: block;
+    width: 50%;
+    padding: 12px 30px;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #ff017d;
+}
+
+.product-description {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-description h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.product-description p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.product-full-details {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-full-details h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.product-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.spec-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.spec-item:hover {
+    background-color: #d1d1d1;
+    transition: 0.3s;
+}
+
+.spec-item strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.spec-item span {
+    color: #555;
+}
+
+.back-to-category {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.back-to-category:hover {
+    text-decoration: underline;
+}
+
+
+/* Styl dla modala */
+/* Efekt hover na obrazie produktu */
+/* Efekt hover na obrazie produktu */
+.product-image img {
+    cursor: zoom-in;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.product-image img:hover {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+
+/* Modal styl */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Przycisk zamykania blisko obrazu */
+/* Przycisk zamykania stylizowany jako ikona */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.close svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+    transition: fill 0.3s ease;
+}
+
+.close:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.close:hover svg {
+    fill: #333; /* Zmieniamy kolor na ciemniejszy przy najechaniu */
+}
+    </style>
 </head>
 <body>
 <header>
