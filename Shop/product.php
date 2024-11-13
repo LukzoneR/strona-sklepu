@@ -158,6 +158,11 @@ try {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+.spec-item:hover {
+    background-color: #d1d1d1;
+    transition: 0.3s;
+}
+
 .spec-item strong {
     font-weight: bold;
     color: #333;
@@ -235,12 +240,10 @@ try {
 
     <div class="product-page">
     <div class="product-top">
-        <!-- Produkt - Obrazek po lewej -->
         <div class="product-image">
             <img src="<?php echo htmlspecialchars($product['photo']); ?>" alt="Zdjęcie produktu">
         </div>
 
-        <!-- Produkt - Szczegóły po prawej -->
         <div class="product-info">
             <h1><?php echo htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']); ?></h1>
             <p class="product-price"><?php echo htmlspecialchars($product['cena']); ?> PLN</p>
@@ -260,18 +263,24 @@ try {
     <div class="product-full-details">
         <h2>Szczegóły produktu</h2>
         <div class="product-specs">
-            <?php
-            // Iteracja po kolumnach z tabeli z wyjątkiem tych, które już wyświetliliśmy
-            foreach ($product as $key => $value) {
-                if (!in_array($key, ['id', 'marka', 'model', 'cena', 'photo', 'opis'])) {
-                    echo "<div class='spec-item'>
-                            <strong>" . ucfirst(str_replace('_', ' ', $key)) . ":</strong>
-                            <span>" . htmlspecialchars($value) . "</span>
-                          </div>";
-                }
+    <?php
+    foreach ($product as $key => $value) {
+        if (!in_array($key, ['id', 'marka', 'model', 'cena', 'photo', 'opis', 'isSale'])) {
+            if ($value === 1) {
+                $value = "Tak";
+            } elseif ($value === 0) {
+                $value = "Nie";
             }
-            ?>
-        </div>
+
+            echo "<div class='spec-item'>
+                    <strong>" . ucfirst(str_replace('_', ' ', $key)) . ":</strong>
+                    <span>" . htmlspecialchars($value) . "</span>
+                  </div>";
+        }
+    }
+    ?>
+</div>
+
     </div>
 
     <a href="index.php" class="back-to-category">Wróć do kategorii</a>
