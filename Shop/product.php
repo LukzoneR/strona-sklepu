@@ -39,153 +39,6 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']); ?></title>
     <link rel="stylesheet" href="style.css">
-    <style>
-
-
-/* Główna sekcja produktu */
-/* Podstawowe style dla strony produktu */
-.product-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
-}
-
-.product-top {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
-
-.product-image {
-    flex: 1;
-    max-width: 500px;
-    margin-right: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.product-image img {
-    width: 100%;
-    height: auto;
-}
-
-.product-info {
-    flex: 1;
-    max-width: 600px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.product-info h1 {
-    font-size: 26px;
-    font-weight: 600;
-    color: #333;
-}
-
-.product-price {
-    font-size: 22px;
-    color: #f97316;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.add-to-cart-btn {
-    margin-top: 20px;
-    padding: 12px 30px;
-    font-size: 18px;
-    background-color: #ff7f00;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.add-to-cart-btn:hover {
-    background-color: #ff5a00;
-}
-
-.product-description {
-    background-color: #ffffff;
-    padding: 20px;
-    margin-top: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.product-description h2 {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.product-description p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555;
-}
-
-.product-full-details {
-    background-color: #ffffff;
-    padding: 20px;
-    margin-top: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.product-full-details h2 {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.product-specs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.spec-item {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.spec-item:hover {
-    background-color: #d1d1d1;
-    transition: 0.3s;
-}
-
-.spec-item strong {
-    font-weight: bold;
-    color: #333;
-}
-
-.spec-item span {
-    color: #555;
-}
-
-.back-to-category {
-    display: inline-block;
-    margin-top: 20px;
-    font-size: 16px;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.back-to-category:hover {
-    text-decoration: underline;
-}
-
-
-    </style>
 </head>
 <body>
 <header>
@@ -212,7 +65,7 @@ try {
                     </a>
                 </form>       
             </div>
-            <div id="user" onclick="document.getElementById('login-modal').style.display='block'">
+            <div id="user" onclick="window.location.href='./index.php'">
                 <a href="#">
                     Konto <img src="./icons/user.png" alt="Użytkownik">
                 </a>
@@ -240,9 +93,16 @@ try {
 
     <div class="product-page">
     <div class="product-top">
-        <div class="product-image">
-            <img src="<?php echo htmlspecialchars($product['photo']); ?>" alt="Zdjęcie produktu">
-        </div>
+    <div class="product-image">
+    <img src="<?php echo htmlspecialchars($product['photo']); ?>" alt="Zdjęcie produktu" id="product-img" onclick="openModal()">
+</div>
+
+<div id="image-modal" class="modal" onclick="closeModal()">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modal-img">
+</div>
+
+
 
         <div class="product-info">
             <h1><?php echo htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']); ?></h1>
@@ -283,7 +143,7 @@ try {
 
     </div>
 
-    <a href="index.php" class="back-to-category">Wróć do kategorii</a>
+    <a href="index.php" class="back-to-category">Wróć do strony głównej</a>
 </div>
 
 
@@ -329,5 +189,46 @@ try {
             </div>
         </div>
     </footer>
+    <script>
+        function openModal() {
+    var modal = document.getElementById("image-modal");
+    var modalImg = document.getElementById("modal-img");
+    var productImg = document.getElementById("product-img");
+
+    modal.style.display = "flex";
+    modalImg.src = productImg.src;
+}
+
+function closeModal() {
+    document.getElementById("image-modal").style.display = "none";
+}
+
+function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        
+        window.addEventListener("scroll", function() {
+            const swipeUpButton = document.getElementById("swipe-up");
+            const footer = document.querySelector("footer");
+            const footerPosition = footer.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+        
+            if (window.scrollY > 100) {
+                swipeUpButton.classList.add("show");
+            } else {
+                swipeUpButton.classList.remove("show");
+            }
+        
+            if (footerPosition < windowHeight) {
+                swipeUpButton.style.bottom = `${windowHeight - footerPosition + 20}px`;
+            } else {
+                swipeUpButton.style.bottom = "20px";
+            }
+        });
+    </script>
+
+        <div id="swipe-up" onclick="scrollToTop()">
+            <img src="./icons/up.png" alt="Swipe Up" />
+        </div>
 </body>
 </html>
