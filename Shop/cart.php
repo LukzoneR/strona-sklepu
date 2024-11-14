@@ -93,6 +93,120 @@
             display: inline-block;
             width: 30px;
         }
+
+
+/* Przycisk zamykania */
+/* Okno modalu */
+.modal-content2 {
+    background-color: #ffffff;
+    margin: 8% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 400px; /* Zmniejszona szerokość okna */
+    max-width: 100%; /* Zapewnia responsywność */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.5s;
+    margin-top: 13%;
+    
+}
+
+/* Przycisk zamykania */
+.close-btn {
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+    background: none;
+    border: none;
+    transition: color 0.3s ease;
+     /* Pozycjonowanie przycisku względem kontenera modalu */
+    top: 20px;
+    right: 20px;
+}
+
+/* Przycisk zamykania po najechaniu */
+.close-btn:hover,
+.close-btn:focus {
+    color: #333; 
+    text-decoration: none;
+}
+
+/* Treść modalu */
+.modal-body {
+    padding: 20px 0;
+    font-size: 16px;
+    text-align: center;
+    color: #333;
+}
+
+/* Przycisk potwierdzenia usunięcia */
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Przycisk 'Tak' */
+.btn-confirm {
+    background-color: #ff017d; 
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-confirm:hover {
+    background-color: #b3005b;
+}
+
+.btn-confirm:active {
+    transform: translateY(2px);
+}
+
+/* Przycisk 'Nie' */
+.btn-cancel {
+    background-color: #dc3545;
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+
+/* Przycisk 'Anuluj' */
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #495057;
+}
+
+.btn-secondary:active {
+    transform: translateY(2px);
+}
+
+/* Użyj małych odstępów pomiędzy przyciskami */
+.modal-footer button + button {
+    margin-left: 10px;
+}
+
+
+
     </style>
     <title>Document</title>
 </head>
@@ -121,9 +235,27 @@
 
                         </div>
                         <div id="delete">
-                            <a href='delete_cart.php?id=<?php echo $item['koszyk_id']; ?>'
-                                onclick="return confirm('Czy na pewno chcesz usunąć ten produkt?')">Usuń</a>
-                        </div>
+    <a href="#" onclick="showDeleteModal('<?php echo $item['koszyk_id']; ?>')">Usuń</a>
+</div>
+
+<!-- Modal potwierdzenia usunięcia -->
+<div id="delete-modal" class="modal">
+    <div class="modal-content2">
+        <div class="modal-header">
+            <span class="close-btn" onclick="hideDeleteModal()">&times;</span>
+            <h2 style="text-align: center;">Potwierdzenie</h2>
+        </div>
+        <div class="modal-body">
+            <p>Czy na pewno chcesz usunąć ten produkt?</p>
+        </div>
+        <div class="modal-footer">
+            <button id="confirm-delete" class="btn-confirm">Tak</button>
+            <button class="btn-secondary" onclick="hideDeleteModal()">Nie</button>
+        </div>
+    </div>
+</div>
+
+
                     </li>
                     <?php endforeach; ?>
                     <?php else: ?>
@@ -170,6 +302,22 @@
             var newQuantity = inputElement.value;
             updateQuantity(koszykId, newQuantity);
         }
+       
+       
+       
+       
+        function showDeleteModal(cartId) {
+    document.getElementById("delete-modal").style.display = "block";
+    document.getElementById("confirm-delete").onclick = function() {
+        window.location.href = `delete_cart.php?id=${cartId}`;
+    };
+}
+
+function hideDeleteModal() {
+    document.getElementById("delete-modal").style.display = "none";
+}
+
+
     </script>
 
 </body>
