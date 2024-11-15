@@ -1,6 +1,6 @@
 # Techmart - Internetowy Sklep Elektroniczny
 
-**Wersja:** 0.8.3  
+**Wersja:** 0.4.9  
 **Autorzy:**  
 - Marcin Puzoń
 - Grzegorz Mrzyk  
@@ -67,6 +67,13 @@ Projekt **Techmart** składa się z następujących komponentów:
 - Rozbudowa procesu zamówienia o autoryzację płatności i historię zamówień.
 - Wprowadzenie systemu logowania i rejestracji użytkowników.
 - Możliwość dodawania opinii i ocen produktów przez użytkowników.
+
+---
+
+## Potencjalne ryzyka
+
+- SQL injection
+- HTML injection
 
 ---
 
