@@ -12,6 +12,10 @@
 
 **Techmart** to sklep internetowy oferujący szeroki wybór produktów elektronicznych, takich jak laptopy, smartfony, telewizory, smartwatche i wiele więcej. Projekt został stworzony z myślą o przejrzystości i intuicyjnej obsłudze, przyjaznej dla użytkowników.
 
+![B2001F98-F9F6-4DEC-BB02-95F6DCD5EE34](https://github.com/user-attachments/assets/3f107128-335f-447e-9a5c-465a23e6359f)
+<i>Widok strony głównej</i>
+
+
 ## Wymagania
 
 Aby uruchomić projekt, niezbędne jest zainstalowanie następujących programów:
