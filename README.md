@@ -10,7 +10,7 @@
 
 ## Opis Projektu
 
-**Techmart** to zaawansowany sklep internetowy oferujący szeroki wybór produktów elektronicznych, takich jak laptopy, smartfony, telewizory, smartwatche i wiele więcej. Projekt został stworzony z myślą o przejrzystości i intuicyjnej obsłudze, przyjaznej dla użytkowników.
+**Techmart** to sklep internetowy oferujący szeroki wybór produktów elektronicznych, takich jak laptopy, smartfony, telewizory, smartwatche i wiele więcej. Projekt został stworzony z myślą o przejrzystości i intuicyjnej obsłudze, przyjaznej dla użytkowników.
 
 ## Wymagania
 
@@ -41,7 +41,6 @@ Projekt **Techmart** składa się z następujących komponentów:
 - **index.php** - Strona główna sklepu z główną ofertą i kategoriami produktów.
 - **product.php** - Strona produktu, wyświetlająca szczegóły, zdjęcia oraz opcje zakupu.
 - **cart.php** - Koszyk użytkownika, który pozwala na dodawanie i usuwanie produktów.
-- **checkout.php** - Proces zamówienia i potwierdzenie zakupu.
 - **db_connect.php** - Skrypt PHP do nawiązania połączenia z bazą danych MySQL.
 - **add_to_cart.php** - Skrypt PHP do obsługi dodawania produktów do koszyka.
 - **delete_cart.php** - Skrypt PHP do usuwania produktów z koszyka.
