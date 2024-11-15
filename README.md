@@ -19,7 +19,7 @@ Aby uruchomić projekt, niezbędne jest zainstalowanie następujących programó
 1. **XAMPP** - Do uruchamiania lokalnego serwera Apache oraz obsługi bazy danych MySQL.
    - Pobierz XAMPP [tutaj](https://www.apachefriends.org/index.html).
 2. **PHP** - Projekt został napisany w PHP, który jest dostarczany razem z XAMPP.
-3. **Przeglądarka internetowa** - Rekomendujemy Google Chrome lub Mozilla Firefox.
+3. **Przeglądarka internetowa** - Rekomendujemy Google Chrome, Mozilla Firefox lub Safari.
 
 ---
 
