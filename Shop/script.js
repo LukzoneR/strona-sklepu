@@ -30,61 +30,6 @@ function toggleForms() {
     }
 }
 
-function checkPasswordStrength() {
-    const password = document.getElementById("reg-password").value;
-    const strengthIndicator = document.getElementById("password-strength");
-    const requirements = {
-        length: document.getElementById("length"),
-        uppercase: document.getElementById("uppercase"),
-        number: document.getElementById("number"),
-        special: document.getElementById("special")
-    };
-
-    
-    strengthIndicator.className = "password-strength";
-    Object.values(requirements).forEach(req => {
-        req.classList.remove("hidden");
-        req.style.opacity = "1";
-    });
-
-    let strength = 0;
-
-    if (password.length >= 8) {
-        strength++;
-        requirements.length.classList.add("hidden");
-    }
-    if (/[A-Z]/.test(password)) {
-        strength++;
-        requirements.uppercase.classList.add("hidden");
-    }
-    if (/\d/.test(password)) {
-        strength++;
-        requirements.number.classList.add("hidden");
-    }
-    if (/[!@#$%^&*]/.test(password)) {
-        strength++;
-        requirements.special.classList.add("hidden");
-    }
-
-    
-    if (strength === 0) {
-        strengthIndicator.classList.add("strength-weak");
-        strengthIndicator.style.width = "0%";
-    } else if (strength === 1) {
-        strengthIndicator.classList.add("strength-weak");
-        strengthIndicator.style.width = "25%";
-    } else if (strength === 2) {
-        strengthIndicator.classList.add("strength-medium");
-        strengthIndicator.style.width = "50%";
-    } else if (strength === 3) {
-        strengthIndicator.classList.add("strength-strong");
-        strengthIndicator.style.width = "75%";
-    } else {
-        strengthIndicator.classList.add("strength-strong");
-        strengthIndicator.style.width = "100%";
-    }
-}
-
 
 // Funkcja do pokazywania/ukrywania hasła w formularzu logowania
 document.getElementById('toggle-password').addEventListener('click', function() {
@@ -212,3 +157,180 @@ function toggleCartSections() {
         toggleLink.innerText = "Przejdź do podsumowania";
     }
 }
+
+
+// Funkcja do rozwijania menu użytkownika
+function toggleUserMenu(event) {
+    const menu = document.getElementById('user-menu');
+    // Sprawdzamy, czy menu jest już otwarte
+    if (menu.style.display === 'block') {
+        menu.style.display = 'none'; // Jeśli tak, zamykamy menu
+    } else {
+        menu.style.display = 'block'; // Jeśli nie, otwieramy menu
+    }
+
+    // Zatrzymujemy propagację kliknięcia, aby nie zamknąć menu, gdy klikniemy w sam przycisk
+    event.stopPropagation();
+}
+
+// Funkcja do zamykania menu, gdy klikniemy w dowolne miejsce poza menu
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('user-menu');
+    const userButton = document.getElementById('user');
+
+    // Sprawdzamy, czy kliknięto poza menu i przyciskiem "Witaj"
+    if (!userButton.contains(event.target)) {
+        menu.style.display = 'none';
+    }
+});
+
+
+// Funkcja do zamykania menu po kliknięciu w wylogowanie
+function logoutUser() {
+    // Możesz dodać logikę wylogowania, np. usunięcie sesji.
+    window.location.href = 'logout.php'; // Zakładając, że logout.php obsługuje wylogowanie
+}
+
+
+
+function handleLogin(event) {
+    event.preventDefault(); // Zatrzymujemy domyślne wysyłanie formularza
+
+    // Pobieramy dane z formularza
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    // Tworzymy obiekt AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'login.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Definiujemy, co ma się stać po otrzymaniu odpowiedzi
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var response = xhr.responseText;
+
+            // Jeśli logowanie się udało
+            if (response === 'success') {
+                // Zalogowano pomyślnie - opcjonalnie przekieruj do strony
+                window.location.href = 'index.php'; 
+            } else {
+                // Jeśli błędny użytkownik lub hasło
+                document.getElementById('error-message').style.display = 'block';
+            }
+        }
+    };
+
+    // Wysyłamy dane z formularza do serwera
+    xhr.send('username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password));
+}
+
+
+function handleRegister(event) {
+    event.preventDefault(); // Zatrzymujemy domyślną akcję formularza (przeładowanie strony)
+
+    // Pobieramy dane z formularza
+    var username = document.getElementById('reg-username').value;
+    var password = document.getElementById('reg-password').value;
+
+    // Tworzymy obiekt AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'register.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Definiujemy, co ma się stać po otrzymaniu odpowiedzi
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var response = xhr.responseText;
+
+            // Jeśli użytkownik już istnieje
+            if (response === 'user_exists') {
+                document.getElementById('error-message').style.display = 'block';
+            } else if (response === 'success') {
+                window.location.href = 'login.php'; // Przekierowanie po udanej rejestracji
+            }
+        }
+    };
+
+    // Wysyłamy dane z formularza do serwera
+    xhr.send('username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password));
+}
+
+
+
+// Sprawdzanie siły hasła
+function checkPasswordStrength() {
+    const password = document.getElementById('reg-password').value;
+    const strengthBar = document.getElementById('password-strength');
+    const length = document.getElementById('length');
+    const uppercase = document.getElementById('uppercase');
+    const number = document.getElementById('number');
+    const special = document.getElementById('special');
+    let strength = 0;
+
+    // Wymagania hasła
+    if (password.length >= 8) {
+        length.style.color = 'green';
+        strength++;
+    } else {
+        length.style.color = 'red';
+    }
+
+    if (/[A-Z]/.test(password)) {
+        uppercase.style.color = 'green';
+        strength++;
+    } else {
+        uppercase.style.color = 'red';
+    }
+
+    if (/\d/.test(password)) {
+        number.style.color = 'green';
+        strength++;
+    } else {
+        number.style.color = 'red';
+    }
+
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        special.style.color = 'green';
+        strength++;
+    } else {
+        special.style.color = 'red';
+    }
+
+    // Ustawienie paska siły hasła
+    if (strength == 4) {
+        strengthBar.style.width = '100%';
+        strengthBar.style.backgroundColor = 'green';
+    } else if (strength >= 3) {
+        strengthBar.style.width = '75%';
+        strengthBar.style.backgroundColor = 'yellow';
+    } else if (strength >= 2) {
+        strengthBar.style.width = '50%';
+        strengthBar.style.backgroundColor = 'orange';
+    } else {
+        strengthBar.style.width = '25%';
+        strengthBar.style.backgroundColor = 'red';
+    }
+}
+
+// Walidacja hasła przed wysłaniem formularza
+function validatePassword() {
+    const password = document.getElementById('reg-password').value;
+    const errorMessage = document.getElementById('error-message');
+    const passwordRequirements = [
+        password.length >= 8,               // Minimum 8 znaków
+        /[A-Z]/.test(password),              // Jedna wielka litera
+        /\d/.test(password),                 // Jedna cyfra
+        /[!@#$%^&*(),.?":{}|<>]/.test(password) // Jeden znak specjalny
+    ];
+
+    // Sprawdzamy, czy wszystkie warunki są spełnione
+    if (passwordRequirements.every(Boolean)) {
+        errorMessage.style.display = 'none';
+        return true; // Można wysłać formularz
+    } else {
+        errorMessage.style.display = 'block';
+        return false; // Zatrzymuje wysyłanie formularza
+    }
+}
+
