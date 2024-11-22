@@ -624,20 +624,57 @@ footer {
     color: #666;
 }
 
-.product-card .price {
+/* Styl dla przekreślonej oryginalnej ceny */
+.product-card .original-price {
+    font-size: 16px;
+    color: #888; /* Kolor szary dla przekreślonej ceny */
+    text-decoration: line-through;
+    margin-bottom: 5px; /* Zmniejszenie przestrzeni między oryginalną ceną a promocją */
+    display: block; /* Upewnij się, że cena przekreślona jest na osobnej linii */
+}
+
+/* Styl dla ceny promocyjnej */
+.product-card .discounted-price {
+    font-size: 20px;
+    color: #E53935; /* Kolor czerwony dla ceny po rabacie */
     font-weight: bold;
-    color: #E53935;
-    font-size: 18px;
-    transition: color 0.3s ease;
+}
+
+/* Poprawki do położenia cen */
+.product-card .price {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s ease;
 }
 
 .product-card:hover .price {
     color: #d32f2f;
 }
+
+/* Zapewnienie, że cena promocyjna jest widoczna i oddzielona od oryginalnej ceny */
+.product-card .product-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-align: center;
+    padding-bottom: 40px; /* Zwiększenie przestrzeni na dole */
+}
+
+/* Kontener dla cen */
+.product-card .prices-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50px; /* Zapewni odpowiednią przestrzeń między ceną oryginalną i promocyjną */
+    margin-bottom: 10px; /* Przestrzeń między cenami a resztą treści */
+}
+
+
 
 .swiper-container {
     width: 100%;

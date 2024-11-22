@@ -1,34 +1,38 @@
 <?php
-// Połączenie z bazą danych
 include("db_connect.php");
 
-$productId = isset($_GET['id']) ? $_GET['id'] : null;
-$selectedCategory = isset($_GET['category']) ? $_GET['category'] : null;
+// Pobranie danych GET z adresu URL
+$category = isset($_GET['category']) ? $_GET['category'] : null;
+$productId = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-if (!$productId || !$selectedCategory) {
-    echo "Nie znaleziono produktu!";
-    exit;
+// Walidacja kategorii
+$validCategories = ['smartfony', 'smartwatche', 'laptopy', 'telewizory', 'myszki_i_klawiatury', 'monitory', 'promocje'];
+if (!in_array($category, $validCategories) || !$productId) {
+    die("Nieprawidłowa kategoria lub produkt.");
 }
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $query = "SELECT * FROM " . $selectedCategory . " WHERE id = :id";
+    // Pobieranie danych produktu z bazy
+    $query = "SELECT * FROM $category WHERE id = :id";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':id', $productId, PDO::PARAM_INT);
     $stmt->execute();
-
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$product) {
-        echo "Nie znaleziono produktu w tej kategorii.";
-        exit;
+        die("Produkt nie został znaleziony.");
     }
 
+    // Obsługa ceny promocyjnej
+    $isPromotion = ($category === 'promocje');
+    $originalPrice = $product['cena'];
+    $discountedPrice = $isPromotion ? number_format($originalPrice * 0.8, 2) : null;
+
 } catch (PDOException $e) {
-    echo "Błąd połączenia z bazą danych: " . $e->getMessage();
-    exit;
+    die("Błąd połączenia z bazą danych: " . $e->getMessage());
 }
 ?>
 
@@ -40,7 +44,7 @@ try {
     <title><?php echo htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']); ?></title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .product-page {
+.product-page {
     margin: 20px auto; /* Ustawi równy margines nad i pod sekcją produktu */
     max-width: 1200px; /* Ustawienia szerokości, aby sekcja była czytelna */
     padding: 20px;
@@ -48,7 +52,6 @@ try {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtelny cień */
     border-radius: 8px; /* Zaokrąglone rogi */
 }
-
 
 .product-top {
     display: flex;
@@ -70,11 +73,17 @@ try {
 .product-image img {
     width: 100%;
     height: auto;
+    cursor: zoom-in;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.product-image img:hover {
+    transform: scale(1.05);
+    filter: brightness(0.9);
 }
 
 .product-info {
     flex: 1;
-    max-width: 600px;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -87,6 +96,25 @@ try {
     color: #333;
 }
 
+.product-price-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #777;
+    font-size: 18px;
+}
+
+.discounted-price {
+    font-size: 22px;
+    color: #f97316;
+    font-weight: bold;
+}
+
 .product-price {
     font-size: 22px;
     color: #f97316;
@@ -95,7 +123,7 @@ try {
 }
 
 .add-to-cart-btn {
-    margin: 20px auto; /* Wyśrodkowanie przycisku */
+    margin: 20px auto;
     display: block;
     width: 50%;
     padding: 12px 30px;
@@ -133,6 +161,7 @@ try {
 }
 
 .product-full-details {
+    width: 100%;
     background-color: #ffffff;
     padding: 20px;
     margin-top: 30px;
@@ -186,18 +215,8 @@ try {
 }
 
 
-/* Styl dla modala */
-/* Efekt hover na obrazie produktu */
-/* Efekt hover na obrazie produktu */
-.product-image img {
-    cursor: zoom-in;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
 
-.product-image img:hover {
-    transform: scale(1.05);
-    filter: brightness(0.9);
-}
+
 
 /* Modal styl */
 .modal {
@@ -316,50 +335,63 @@ try {
     <img class="modal-content" id="modal-img">
 </div>
 
+<?php 
+$selectedCategory = isset($_GET['category']) ? $_GET['category'] : null;
 
+?>
 
-        <div class="product-info">
-            <h1><?php echo htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']); ?></h1>
-            <p class="product-price"><?php echo htmlspecialchars($product['cena']); ?> PLN</p>
-            <form action="add_to_cart.php" method="POST">
-                <input type="hidden" name="produkt_id" value="<?php echo $productId; ?>">
-                <input type="hidden" name="kategoria" value="<?php echo $selectedCategory; ?>">
-                <button type="submit" class="add-to-cart-btn">Dodaj do koszyka</button>
-            </form>
-        </div>
+<div class="product-info">
+    <h1><?php echo htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']); ?></h1>
+    
+    <div class="product-price-container">
+        <?php if ($selectedCategory === 'promocje'): ?>
+            <span class="original-price"><?php echo number_format($product['cena'], 2); ?> PLN</span>
+            <span class="discounted-price"><?php echo number_format($product['cena'] * 0.8, 2); ?> PLN</span>
+        <?php else: ?>
+            <span class="discounted-price"><?php echo $product['cena']; ?> PLN</span>
+        <?php endif; ?>
     </div>
 
-    <div class="product-description">
-        <h2>Opis produktu</h2>
-        <p><?php echo nl2br(htmlspecialchars($product['opis'])); ?></p>
-    </div>
+    <form action="add_to_cart.php" method="POST">
+        <input type="hidden" name="produkt_id" value="<?php echo $productId; ?>">
+        <input type="hidden" name="kategoria" value="<?php echo htmlspecialchars($selectedCategory); ?>">
+        <button type="submit" class="add-to-cart-btn">Dodaj do koszyka</button>
+    </form>
+</div>
+            
 
-    <div class="product-full-details">
-        <h2>Szczegóły produktu</h2>
-        <div class="product-specs">
-    <?php
-    foreach ($product as $key => $value) {
-        if (!in_array($key, ['id', 'marka', 'model', 'cena', 'photo', 'opis', 'isSale'])) {
-            if ($value === 1) {
-                $value = "Tak";
-            } elseif ($value === 0) {
-                $value = "Nie";
+
+<div class="product-description">
+    <h2>Opis produktu</h2>
+    <p><?php echo nl2br(htmlspecialchars($product['opis'])); ?></p>
+</div>
+
+<div class="product-full-details">
+    <h2>Szczegóły produktu</h2>
+    <div class="product-specs">
+        <?php
+        foreach ($product as $key => $value) {
+            if (!in_array($key, ['id', 'marka', 'model', 'cena', 'photo', 'opis'])) {
+                if ($value === 1) {
+                    $value = "Tak";
+                } elseif ($value === 0) {
+                    $value = "Nie";
+                }
+
+                echo "<div class='spec-item'>
+                        <strong>" . ucfirst(str_replace('_', ' ', $key)) . ":</strong>
+                        <span>" . htmlspecialchars($value) . "</span>
+                      </div>";
             }
-
-            echo "<div class='spec-item'>
-                    <strong>" . ucfirst(str_replace('_', ' ', $key)) . ":</strong>
-                    <span>" . htmlspecialchars($value) . "</span>
-                  </div>";
         }
-    }
-    ?>
+        ?>
+    </div>
 </div>
+
+<a href="index.php" class="back-to-category">Wróć do strony głównej</a>
 
     </div>
-
-    <a href="index.php" class="back-to-category">Wróć do strony głównej</a>
-</div>
-
+    </div>
 
     <footer>
         <div id="footer-container">

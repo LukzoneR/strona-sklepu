@@ -2,6 +2,7 @@
 include("db_connect.php");
 
 $isAjaxRequest = isset($_GET['ajax']) && $_GET['ajax'] == '1';
+
 $selectedCategory = isset($_GET['category']) ? $_GET['category'] : null;
 
 $validCategories = ['smartfony', 'smartwatche', 'laptopy', 'telewizory', 'myszki_i_klawiatury', 'monitory', 'promocje'];
@@ -22,14 +23,28 @@ try {
         $productHtml = '';
         foreach ($products as $product) {        
             $productLink = 'product.php?category=' . urlencode($selectedCategory) . '&id=' . urlencode($product['id']);
-            $productHtml .= '
-            <a href="' . $productLink . '" class="product-card">
+            $productHtml .= '<a href="' . $productLink . '" class="product-card">
                 <div class="product-card-content">
                     <img src="' . htmlspecialchars($product['photo']) . '" alt="Zdjęcie produktu">
-                    <h3 style="color:black">' . htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']) . '</h3>
-                    <p class="price">Cena: ' . htmlspecialchars($product['cena']) . '</p>
-                </div>
-            </a>';
+                    <h3>' . htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']) . '</h3>';
+            
+            // Sprawdzenie, czy to kategoria promocje, aby dodać rabat
+            if ($selectedCategory === 'promocje') {
+                // Oryginalna cena (przekreślona)
+                $originalPrice = floatval($product['cena']); // Upewniamy się, że cena to liczba zmiennoprzecinkowa
+                $discountedPrice = $originalPrice * 0.8; // 20% rabat
+                
+                // Dodajemy kontener dla obu cen
+                $productHtml .= '<div class="prices-container">
+                    <p class="original-price"><s>' . number_format($originalPrice, 2) . ' zł</s></p>
+                    <p class="discounted-price">' . number_format($discountedPrice, 2) . ' zł</p>
+                </div>';
+            } else {
+                // Cena dla pozostałych kategorii
+                $productHtml .= '<p class="price">' . number_format(floatval($product['cena']), 2) . ' zł</p>';
+            }
+
+            $productHtml .= '</div></a>';
         }
     } else {
         $productHtml = '';
@@ -43,8 +58,8 @@ try {
     echo "Błąd połączenia z bazą danych: " . $e->getMessage();
     exit;
 }
-
 ?>
+
 
 
 
