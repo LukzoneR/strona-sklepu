@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Lis 11, 2024 at 03:10 PM
+-- Generation Time: Lis 27, 2024 at 05:04 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -32,6 +32,26 @@ CREATE TABLE `koszyki` (
   `uzytkownik_id` int(11) DEFAULT NULL,
   `data_utworzenia` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `koszyki`
+--
+
+INSERT INTO `koszyki` (`koszyk_id`, `uzytkownik_id`, `data_utworzenia`) VALUES
+(1, NULL, '2024-11-12 23:49:50'),
+(2, NULL, '2024-11-12 23:50:13'),
+(3, NULL, '2024-11-13 15:29:42'),
+(4, NULL, '2024-11-13 15:29:55'),
+(5, NULL, '2024-11-13 16:43:27'),
+(6, NULL, '2024-11-13 16:48:08'),
+(7, NULL, '2024-11-13 16:54:21'),
+(8, NULL, '2024-11-13 16:54:25'),
+(9, NULL, '2024-11-13 17:26:03'),
+(10, NULL, '2024-11-14 07:06:11'),
+(11, NULL, '2024-11-17 13:08:01'),
+(12, NULL, '2024-11-20 15:09:53'),
+(13, NULL, '2024-11-21 08:21:44'),
+(14, NULL, '2024-11-22 12:43:48');
 
 -- --------------------------------------------------------
 
@@ -206,6 +226,50 @@ INSERT INTO `myszki_i_klawiatury` (`id`, `typ`, `marka`, `model`, `rodzaj_polacz
 (18, 'Mysz', 'BenQ', 'Zowie S2', 'Przewodowe', 0, 0, '400zł', 'photos/myszki_klawiatury/mysz10.png', 0, 'BenQ Zowie S2 to przewodowa mysz zaprojektowana specjalnie dla profesjonalnych graczy. Posiada ergonomiczny kształt, który minimalizuje zmęczenie dłoni, co jest idealne podczas długich sesji gamingowych. Mysz oferuje precyzyjne śledzenie ruchu i szybki czas reakcji. Dzięki solidnej konstrukcji jest trwała i odporna na intensywne użytkowanie. BenQ Zowie S2 to niezawodny wybór dla osób ceniących sobie minimalizm i efektywność.'),
 (19, 'Klawiatura', 'Logitech', 'K120', 'Przewodowe', 0, 0, '150zł', 'photos/myszki_klawiatury/klawiatura9.png', 1, 'Logitech K120 to klasyczna klawiatura przewodowa, idealna do codziennego użytku biurowego. Ergonomiczny kształt i niska konstrukcja klawiszy zapewniają wygodę podczas długotrwałej pracy. Klawiatura jest odporna na zalania, co zwiększa jej trwałość i bezpieczeństwo. Dzięki standardowemu układowi klawiszy jest łatwa w obsłudze i intuicyjna. Logitech K120 to solidny wybór dla osób szukających prostoty i niezawodności w rozsądnej cenie.'),
 (20, 'Mysz', 'Razer', 'Naga X', 'Bezprzewodowe', 1, 16, '300zł', 'photos/myszki_klawiatury/mysz11.png', 1, 'Razer Naga X to bezprzewodowa mysz stworzona z myślą o graczach MMO, posiadająca aż 16 programowalnych przycisków. Dzięki temu użytkownik może przypisać kluczowe funkcje i makra, co znacznie ułatwia grę. Ergonomiczny kształt i lekka konstrukcja sprawiają, że mysz idealnie leży w dłoni. Wysoka czułość sensora optycznego umożliwia precyzyjne śledzenie ruchów. Podświetlenie RGB dodaje efektowności i pozwala na personalizację wizualną, dostosowaną do indywidualnych preferencji użytkownika.');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `promocje`
+--
+
+CREATE TABLE `promocje` (
+  `id` int(11) NOT NULL,
+  `marka` varchar(100) NOT NULL,
+  `model` varchar(100) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `opis` text DEFAULT NULL,
+  `procesor` varchar(100) DEFAULT NULL,
+  `pamiec_RAM` varchar(10) DEFAULT NULL,
+  `pamiec_wewnetrzna` varchar(10) DEFAULT NULL,
+  `ekran` varchar(50) DEFAULT NULL,
+  `rozdzielczosc_ekranu` varchar(50) DEFAULT NULL,
+  `bateria` varchar(10) DEFAULT NULL,
+  `wymiary` varchar(50) DEFAULT NULL,
+  `waga` varchar(50) DEFAULT NULL,
+  `system_operacyjny` varchar(100) DEFAULT NULL,
+  `lacznosc` varchar(255) DEFAULT NULL,
+  `aparat_glowny` varchar(50) DEFAULT NULL,
+  `aparat_przedni` varchar(50) DEFAULT NULL,
+  `inne_cechy` text DEFAULT NULL,
+  `cena` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `promocje`
+--
+
+INSERT INTO `promocje` (`id`, `marka`, `model`, `photo`, `opis`, `procesor`, `pamiec_RAM`, `pamiec_wewnetrzna`, `ekran`, `rozdzielczosc_ekranu`, `bateria`, `wymiary`, `waga`, `system_operacyjny`, `lacznosc`, `aparat_glowny`, `aparat_przedni`, `inne_cechy`, `cena`) VALUES
+(1, 'Apple', 'iPad Pro 12.9\".', 'photos/promocje/ipad_pro_12_9.png', 'iPad Pro 12.9\" to wyjątkowy tablet przeznaczony dla profesjonalistów i wymagających użytkowników. Wyposażony w rewelacyjny ekran Liquid Retina XDR o przekątnej 12.9 cala, który zapewnia niezrównane wrażenia wizualne. Napędzany najnowszym procesorem Apple M2, umożliwia szybkie przetwarzanie danych i obsługę najbardziej wymagających aplikacji. Dzięki obsłudze Apple Pencil drugiej generacji oraz klawiatury Magic Keyboard, staje się idealnym narzędziem do pracy i twórczości.', 'Apple M2', '16 GB', '2048 GB', '12.9\" Liquid Retina XDR', '2732 x 2048', '10758 mAh', '280.6 x 214.9 x 6.4 mm', '682 g', 'iPadOS 17', 'Wi-Fi 6E, 5G', '12 MP', '12 MP', 'Face ID, cztery głośniki stereo, obsługa Apple Pencil 2. gen.', 7499.99),
+(2, 'Samsung', 'Galaxy Tab S9 Ultra', 'photos/promocje/galaxy_tab_s9_ultra.png', 'Galaxy Tab S9 Ultra to największy tablet Samsunga, idealny dla użytkowników ceniących przestronny ekran i wydajność. Ekran Dynamic AMOLED 2X o przekątnej 14.6 cala oferuje niezwykle szczegółowy obraz, idealny do pracy, rozrywki i edycji zdjęć. Wyposażony w najnowszy procesor Snapdragon 8 Gen 2 oraz rysik S Pen, doskonale sprawdzi się zarówno w biurze, jak i podczas twórczych projektów. Wodoszczelność w standardzie IP68 dodaje mu wytrzymałości.', 'Snapdragon 8 Gen 2', '12 GB', '512 GB', '14.6\" Dynamic AMOLED 2X', '2960 x 1848', '11200 mAh', '326.4 x 208.6 x 5.5 mm', '732 g', 'Android 13', 'Wi-Fi 6E, 5G', '13 MP', '12 MP', 'Obsługa rysika S Pen, HDR10+, Dolby Atmos, wbudowany czytnik linii papilarnych', 6399.99),
+(3, 'Lenovo', 'Tab P12 Pro', 'photos/promocje/lenovo_tab_p12_pro.png', 'Lenovo Tab P12 Pro to tablet klasy premium z ekranem AMOLED, zapewniającym żywe kolory i głęboką czerń. Dzięki procesorowi Snapdragon 870 i 8 GB pamięci RAM, doskonale nadaje się do multitaskingu, gier i oglądania filmów w wysokiej jakości. Lekka konstrukcja i długi czas pracy na baterii sprawiają, że jest idealnym towarzyszem podróży. Cztery głośniki JBL dostarczają niesamowitych wrażeń audio.', 'Snapdragon 870', '8 GB', '256 GB', '12.6\" AMOLED', '2560 x 1600', '10200 mAh', '285.6 x 184.5 x 5.6 mm', '565 g', 'Android 12', 'Wi-Fi 6, 5G', '13 MP', '8 MP', 'Obsługa rysika Lenovo Precision Pen 3, Dolby Vision, cztery głośniki JBL', 4499.00),
+(4, 'Microsoft', 'Surface Pro 9', 'photos/promocje/surface_pro_9.png', 'Microsoft Surface Pro 9 łączy funkcjonalność tabletu z wydajnością laptopa. Dzięki procesorowi Intel Core i7 oraz ekranowi PixelSense, świetnie nadaje się do pracy biurowej, kreatywnych projektów i rozrywki. Wbudowany kickstand i opcjonalna klawiatura sprawiają, że to urządzenie doskonale zastępuje tradycyjny laptop. Obsługa rysika Surface Slim Pen pozwala na precyzyjne rysowanie i pisanie.', 'Intel Core i7-1255U', '16 GB', '512 GB', '13\" PixelSense', '2880 x 1920', '5120 mAh', '287 x 208 x 9.3 mm', '879 g', 'Windows 11', 'Wi-Fi 6E, Bluetooth 5.1', '10 MP', '5 MP', 'Obsługa rysika Surface Slim Pen, port Thunderbolt 4, wbudowany kickstand', 7299.99),
+(5, 'Xiaomi', 'Pad 6 Pro', 'photos/promocje/xiaomi_pad_6_pro.png', 'Xiaomi Pad 6 Pro to doskonały wybór dla osób szukających wydajnego tabletu w przystępnej cenie. Wyposażony w ekran IPS LCD o wysokiej rozdzielczości i odświeżaniu 120 Hz, oferuje płynne wrażenia wizualne. Procesor Snapdragon 8+ Gen 1 oraz 12 GB pamięci RAM gwarantują szybkie działanie, a bateria o pojemności 8600 mAh zapewnia długą pracę bez potrzeby ładowania. Idealny do gier, filmów i codziennych zadań.', 'Snapdragon 8+ Gen 1', '12 GB', '256 GB', '11\" IPS LCD', '2880 x 1800', '8600 mAh', '254.7 x 165.3 x 6.5 mm', '490 g', 'Android 13', 'Wi-Fi 6, Bluetooth 5.2', '50 MP', '20 MP', 'Cztery głośniki Dolby Atmos, wbudowany czytnik linii papilarnych, szybkie ładowanie 67W', 3199.99),
+(6, 'Huawei', 'MatePad Pro 11', 'photos/promocje/huawei_matepad_pro_11.png', 'Huawei MatePad Pro 11 to ultralekki tablet z ekranem OLED, oferujący niesamowitą jakość obrazu. HarmonyOS 3 zapewnia płynne działanie systemu i intuicyjną obsługę. Tablet obsługuje rysik M-Pencil, co czyni go idealnym narzędziem dla twórców i studentów. Wydajna bateria pozwala na wiele godzin pracy, a cztery głośniki Harman Kardon zapewniają świetną jakość dźwięku.', 'Snapdragon 870', '8 GB', '128 GB', '11\" OLED', '2560 x 1600', '8300 mAh', '246 x 159 x 5.9 mm', '449 g', 'HarmonyOS 3', 'Wi-Fi 6', '13 MP', '8 MP', 'Obsługa rysika Huawei M-Pencil, HDR10, funkcja Multi-Screen Collaboration', 3899.00),
+(7, 'Amazon', 'Fire Max 11', 'photos/promocje/amazon_fire_max_11.png', 'Amazon Fire Max 11 to przystępny cenowo tablet, który doskonale sprawdzi się w codziennym użytkowaniu. Dzięki integracji z Alexą i Fire OS, użytkownik ma łatwy dostęp do ulubionych aplikacji, książek i gier. Kompaktowa konstrukcja oraz długi czas pracy na baterii czynią go idealnym wyborem dla rodzin.', 'MediaTek MT8188J', '4 GB', '64 GB', '11\" IPS LCD', '2000 x 1200', '7500 mAh', '259 x 163 x 7.5 mm', '490 g', 'Fire OS', 'Wi-Fi 6, Bluetooth 5.1', '8 MP', '5 MP', 'Rozpoznawanie głosu, zintegrowana Alexa, wsparcie dla Amazon Kids', 1299.99),
+(8, 'Asus', 'ROG Flow Z13', 'photos/promocje/asus_rog_flow_z13.png', 'Asus ROG Flow Z13 to unikalny tablet stworzony z myślą o graczach. Wyposażony w wydajny procesor Intel Core i9 oraz kartę graficzną RTX, oferuje możliwości zbliżone do laptopów gamingowych. Obsługa zewnętrznej karty graficznej i porty Thunderbolt 4 czynią go niezwykle wszechstronnym urządzeniem, które sprawdzi się również w pracy kreatywnej.', 'Intel Core i9-12900H', '16 GB', '1000 GB', '13.4\" IPS LCD', '1920 x 1200', '6000 mAh', '302 x 204 x 12 mm', '1180 g', 'Windows 11', 'Wi-Fi 6E, Bluetooth 5.2', '8 MP', '5 MP', 'Obsługa zewnętrznej karty graficznej, Thunderbolt 4, podświetlana klawiatura RGB, Dolby Vision', 10999.99),
+(9, 'Google', 'Pixel Tablet', 'photos/promocje/google_pixel_tablet.png', 'Pixel Tablet to wszechstronny tablet od Google, idealny do codziennego użytku. Jego unikalną cechą jest dołączona stacja dokująca z głośnikiem, która przekształca urządzenie w inteligentny ekran. Dzięki procesorowi Tensor G2 i integracji z Google Home, tablet oferuje doskonałą wydajność i funkcjonalność.', 'Tensor G2', '8 GB', '128 GB', '10.95\" LCD', '2560 x 1600', '7000 mAh', '169.0 x 258.0 x 8.1 mm', '493 g', 'Android 14', 'Wi-Fi 6E, Bluetooth 5.2', '8 MP', '8 MP', 'Stacja dokująca z głośnikiem, rozpoznawanie twarzy, Google Assistant', 2799.99),
+(10, 'Realme', 'Pad 2', 'photos/promocje/realme_pad_2.png', 'Realme Pad 2 to przystępny cenowo tablet, który oferuje solidną wydajność i przyjazny design. Dzięki ekranowi LCD o wysokiej jasności i technologii ochrony wzroku, doskonale sprawdzi się do nauki i przeglądania multimediów. Funkcja szybkiego ładowania pozwala na szybkie uzupełnienie energii, a lekka konstrukcja czyni go wygodnym w codziennym użytkowaniu.', 'Helio G99', '6 GB', '128 GB', '11.5\" IPS LCD', '2000 x 1200', '8360 mAh', '258 x 167.1 x 7.2 mm', '480 g', 'Android 13', 'Wi-Fi 5, Bluetooth 5.0', '8 MP', '5 MP', 'Obsługa microSD, tryb ochrony wzroku, 4 głośniki Dolby Atmos', 1499.00);
 
 -- --------------------------------------------------------
 
@@ -427,6 +491,12 @@ ALTER TABLE `myszki_i_klawiatury`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `promocje`
+--
+ALTER TABLE `promocje`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `smartfony`
 --
 ALTER TABLE `smartfony`
@@ -459,13 +529,13 @@ ALTER TABLE `uzytkownicy`
 -- AUTO_INCREMENT for table `koszyki`
 --
 ALTER TABLE `koszyki`
-  MODIFY `koszyk_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `koszyk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `koszyk_produkty`
 --
 ALTER TABLE `koszyk_produkty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `laptopy`
@@ -507,7 +577,7 @@ ALTER TABLE `telewizory`
 -- AUTO_INCREMENT for table `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
-  MODIFY `uzytkownik_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `uzytkownik_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

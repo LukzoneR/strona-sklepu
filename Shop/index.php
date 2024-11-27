@@ -26,7 +26,7 @@ try {
             $productHtml .= '<a href="' . $productLink . '" class="product-card">
                 <div class="product-card-content">
                     <img src="' . htmlspecialchars($product['photo']) . '" alt="Zdjęcie produktu">
-                    <h3>' . htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']) . '</h3>';
+                    <h3 style="color:black";>' . htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']) . '</h3>';
             
             // Sprawdzenie, czy to kategoria promocje, aby dodać rabat
             if ($selectedCategory === 'promocje') {
@@ -41,7 +41,7 @@ try {
                 </div>';
             } else {
                 // Cena dla pozostałych kategorii
-                $productHtml .= '<p class="price">' . number_format(floatval($product['cena']), 2) . ' zł</p>';
+                $productHtml .= '<p class="price" style="color:red";>' . number_format(floatval($product['cena']), 2) . ' zł</p>';
             }
 
             $productHtml .= '</div></a>';
