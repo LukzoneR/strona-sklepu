@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("db_connect.php");
 
 $isAjaxRequest = isset($_GET['ajax']) && $_GET['ajax'] == '1';
@@ -21,31 +22,46 @@ try {
         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $productHtml = '';
-        foreach ($products as $product) {        
-            $productLink = 'product.php?category=' . urlencode($selectedCategory) . '&id=' . urlencode($product['id']);
-            $productHtml .= '<a href="' . $productLink . '" class="product-card">
-                <div class="product-card-content">
-                    <img src="' . htmlspecialchars($product['photo']) . '" alt="Zdjęcie produktu">
-                    <h3 style="color:black";>' . htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']) . '</h3>';
-            
-            // Sprawdzenie, czy to kategoria promocje, aby dodać rabat
-            if ($selectedCategory === 'promocje') {
-                // Oryginalna cena (przekreślona)
-                $originalPrice = floatval($product['cena']); // Upewniamy się, że cena to liczba zmiennoprzecinkowa
-                $discountedPrice = $originalPrice * 0.8; // 20% rabat
-                
-                // Dodajemy kontener dla obu cen
-                $productHtml .= '<div class="prices-container">
-                    <p class="original-price"><s>' . number_format($originalPrice, 2) . ' zł</s></p>
-                    <p class="discounted-price">' . number_format($discountedPrice, 2) . ' zł</p>
-                </div>';
-            } else {
-                // Cena dla pozostałych kategorii
-                $productHtml .= '<p class="price" style="color:red";>' . number_format(floatval($product['cena']), 2) . ' zł</p>';
-            }
+foreach ($products as $product) {        
+    $productLink = 'product.php?category=' . urlencode($selectedCategory) . '&id=' . urlencode($product['id']);
+    $productHtml .= '<a href="' . $productLink . '" class="product-card">
+        <div class="product-card-content">
+            <img src="' . htmlspecialchars($product['photo']) . '" alt="Zdjęcie produktu">
+            <h3 style="color:black;">' . htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']) . '</h3>';
 
-            $productHtml .= '</div></a>';
-        }
+    // Sprawdzenie, czy to kategoria promocje, aby dodać rabat
+    if ($selectedCategory === 'promocje') {
+        // Oryginalna cena (przekreślona)
+        $originalPrice = floatval($product['cena']); // Upewniamy się, że cena to liczba zmiennoprzecinkowa
+        $discountedPrice = $originalPrice * 0.8; // 20% rabat
+        
+        // Dodajemy kontener dla obu cen
+        $productHtml .= '<div class="prices-container">
+            <p class="original-price"><s>' . number_format($originalPrice, 2) . ' zł</s></p>
+            <p class="discounted-price">' . number_format($discountedPrice, 2) . ' zł</p>
+        </div>';
+    } else {
+        // Cena dla pozostałych kategorii
+        $productHtml .= '<p class="price" style="color:red;">' . number_format(floatval($product['cena']), 2) . ' zł</p>';
+    }
+
+    // Dodanie formularza z przyciskiem koszyka (po kliknięciu w ikonę)
+    $productHtml .= '<form action="add_to_cart.php" method="POST" class="add-to-cart-form">
+        <input type="hidden" name="produkt_id" value="' . urlencode($product['id']) . '">
+        <input type="hidden" name="kategoria" value="' . htmlspecialchars($selectedCategory) . '">
+        <div class="add-to-cart-icon">
+            <button type="submit" class="add-to-cart-btn">
+                <img src="icons/cart.png" alt="Koszyk">
+            </button>
+        </div>
+    </form>';
+
+    $productHtml .= '</div></a>';
+}
+
+
+        
+        
     } else {
         $productHtml = '';
     }
@@ -73,6 +89,58 @@ try {
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <style>
+
+/* Styl przycisku koszyka */
+.add-to-cart-form {
+    position: absolute;
+    bottom: 5px;  /* Umieszcza przycisk na dole */
+    right: 5px;   /* Umieszcza przycisk z prawej strony */
+    opacity: 0;    /* Na początku przycisk jest ukryty */
+    transition: opacity 0.3s ease-in-out; /* Płynne przejście */
+    z-index: 10;   /* Zapewnia, że przycisk będzie na wierzchu */
+}
+
+.product-card:hover .add-to-cart-form {
+    opacity: 1; /* Przy kliknięciu w kartę produktu, przycisk staje się widoczny */
+}
+
+/* Styl samego przycisku */
+.add-to-cart-btn {
+    background-color: #28a745; /* Zielony kolor przycisku */
+    border: none;
+    padding: 8px;  /* Mniejszy padding, żeby przycisk był mniejszy */
+    width: 45px;  /* Szerokość kwadratu (powiększone) */
+    height: 45px; /* Wysokość kwadratu (powiększone) */
+    border-radius: 5px; /* Zaokrąglone rogi */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styl ikony koszyka */
+.add-to-cart-btn img {
+    width: 20px;  /* Ustawia rozmiar ikony koszyka */
+    height: 20px; /* Dostosowuje wysokość ikony do nowego rozmiaru */
+    position: relative;
+    top: 2px; /* Przesunięcie ikony w dół, aby była dokładnie wyśrodkowana */
+}
+
+/* Efekt hover na przycisku */
+.add-to-cart-btn:hover {
+    background-color: #218838; /* Ciemniejszy zielony przy najechaniu */
+}
+
+/* Styl ikony koszyka */
+.add-to-cart-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
         /* Stylizacja dla rozwijanego menu */
 #user {
     position: relative;
@@ -190,7 +258,6 @@ try {
                 </form>
             </div>
 <?php
-session_start(); // Upewnij się, że sesja jest rozpoczęta
 if (isset($_SESSION['username'])):
     $username = $_SESSION['username'];
     ?>

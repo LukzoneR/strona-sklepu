@@ -275,7 +275,10 @@
                     echo number_format($totalPrice);
                     ?> zł</span>
                 </p>
-                <button id="checkout-btn">Przejdź do kasy</button>
+                <form action="summary.php" method="get">
+                    <button type="submit">Przejdź do kasy</button>
+                </form>
+
             </div>
         </div>
     </div>
