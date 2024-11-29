@@ -61,17 +61,16 @@ html {
     margin-left: 50%;
 }
 
-
-
+/* Styl dla kontenera formularza wyszukiwania */
 #searchbar {
     display: flex;
     width: 100%;
     max-width: 600px;
-    margin: 0 auto; 
+    margin: 0 auto;
     position: relative;
 }
 
-
+/* Styl dla inputu formularza */
 #searchbar input[type="text"] {
     width: 100%;
     padding: 10px 15px;
@@ -84,19 +83,18 @@ html {
     transition: border-color 0.3s ease;
 }
 
+/* Styl dla placeholdera */
 #searchbar input[type="text"]::placeholder {
     color: var(--dark-gray);
     opacity: 0.6;
 }
 
+/* Styl po kliknięciu w input (fokus) */
 #searchbar input[type="text"]:focus {
     border-color: var(--primary-color);
 }
 
-.formularz {
-    width: 122%;
-}
-
+/* Styl dla linku w formularzu (lupka) */
 #searchbar a {
     position: absolute;
     right: 10px;
@@ -111,10 +109,66 @@ html {
     border-radius: 50%;
 }
 
+/* Styl dla obrazu (ikona lupki) */
 #searchbar img {
     width: 15px;
     height: 15px;
-    filter: invert(1);
+    filter: invert(1); /* Odwrócenie koloru na biały */
+}
+
+/* Styl dla formularza wyszukiwania, z dodatkowym szerokością */
+.formularz {
+    width: 122%;
+}
+
+/* Styl dla kontenera wyników wyszukiwania, pod formularzem */
+#results {
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto 0;
+    padding: 10px;
+    border: 1px solid var(--light-gray);
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    display: none;
+    max-height: 300px; /* Maksymalna wysokość dla wyników */
+    overflow-y: auto; /* Scrollowanie, gdy jest za dużo wyników */
+}
+
+/* Styl dla wyników wyszukiwania */
+#results .category-section {
+    margin-bottom: 15px;
+}
+
+#results h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+#results ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#results li {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+#results li:last-child {
+    border-bottom: none;
+}
+
+/* Styl dla wyników wyszukiwania po najechaniu */
+#results li:hover {
+    background-color: #f4f4f4;
+    cursor: pointer;
 }
 
 #cart, #user {

@@ -229,6 +229,7 @@ foreach ($products as $product) {
     display: block;
 }
 
+
     </style>
 </head>
 
@@ -250,13 +251,20 @@ foreach ($products as $product) {
                 <img src="./images/logos/techmart.svg" alt="Logo strony">
             </div>
             <div id="searchbar">
-                <form action="/search" method="GET" class="formularz" autocomplete="off">
-                    <input type="text" name="query" placeholder="Szukaj produktów...">
-                    <a href="/#">
-                        <img src="./icons/search.png" alt="Szukaj" class="zdjecie">
-                    </a>
-                </form>
-            </div>
+    <form id="searchForm" class="formularz" autocomplete="off">
+        <input type="text" id="searchInput" name="query" placeholder="Szukaj produktów..." oninput="searchProducts()">
+        <a href="/#">
+            <img src="./icons/search.png" alt="Szukaj" class="zdjecie">
+        </a>
+    </form>
+    <div id="results"></div> <!-- Div na wyniki wyszukiwania -->
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+
 <?php
 if (isset($_SESSION['username'])):
     $username = $_SESSION['username'];

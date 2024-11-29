@@ -334,3 +334,53 @@ function validatePassword() {
     }
 }
 
+function searchProducts() {
+    const query = document.getElementById('searchInput').value.trim();
+    const resultsContainer = document.getElementById('results');
+
+    // Jeśli zapytanie jest puste, ukryj wyniki
+    if (query === '') {
+        resultsContainer.style.display = 'none';
+        resultsContainer.innerHTML = '';
+        return;
+    }
+
+    // Wysyłamy zapytanie AJAX
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `search.php?query=${encodeURIComponent(query)}`, true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            const results = JSON.parse(xhr.responseText);
+
+            // Jeśli są wyniki
+            if (results.length > 0) {
+                // Tworzymy listę wyników
+                let html = '<ul>';
+                results.forEach(product => {
+                    html += `<li>${product.marka} ${product.model}</li>`;
+                });
+                html += '</ul>';
+
+                resultsContainer.innerHTML = html;
+                resultsContainer.style.display = 'block'; // Pokazuje kontener wyników
+            } else {
+                resultsContainer.innerHTML = '<p>Brak wyników</p>';
+                resultsContainer.style.display = 'block'; // Pokazuje kontener wyników
+            }
+        }
+    };
+    xhr.send();
+}
+
+// Zamknięcie wyników, jeśli kliknięto poza formularz
+document.addEventListener('click', function(event) {
+    const resultsContainer = document.getElementById('results');
+    const searchbar = document.getElementById('searchbar');
+
+    // Sprawdzamy, czy kliknięto w wyszukiwarkę lub jej pole
+    if (!searchbar.contains(event.target)) {
+        resultsContainer.style.display = 'none'; // Ukrywa wyniki
+        resultsContainer.innerHTML = ''; // Czyści wyniki
+    }
+});
+
