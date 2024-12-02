@@ -1,6 +1,6 @@
 # Techmart - Internetowy Sklep Elektroniczny
 
-**Wersja:** 0.4.9  
+ 
 **Autorzy:**  
 - Marcin Puzoń
 - Grzegorz Mrzyk  
@@ -51,6 +51,12 @@ Projekt **Techmart** składa się z następujących komponentów:
 - **style.css** - Główny plik CSS, odpowiadający za wygląd strony i layout.
 - **images/** - Folder zawierający wszystkie obrazy produktów oraz elementy graficzne strony.
 - **icons/** - Folder zawierający ikony używane na stronie (np. koszyk, profil użytkownika).
+- **checkout.php** - Skrypt do tworzenia formularza zamówień
+- **clear_cart.php** - Skrypt do usuwania zawartości koszyka
+- **login.php** - Skrypt PHP logowania do sklepu
+- **logout.php** - Skrypt PHP do wylogowywania ze sklepu
+- **register.php** - Skrypt PHP do rejestracji nowego konta
+- **search.php** - Skrypt PHP do wyszukiwania produktów znajdujących się na stronie
 
 ---
 
