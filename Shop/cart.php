@@ -275,8 +275,12 @@
                     echo number_format($totalPrice);
                     ?> zł</span>
                 </p>
-                <form action="summary.php" method="get">
-                    <button type="submit">Przejdź do kasy</button>
+                <form action="checkout.php" method="get" id="checkoutForm">
+                    <?php if (empty($cartItems)): ?>
+                        <button type="button" disabled>Przejdź do kasy</button>
+                    <?php else: ?>
+                        <button type="submit">Przejdź do kasy</button>
+                    <?php endif; ?>
                 </form>
 
             </div>

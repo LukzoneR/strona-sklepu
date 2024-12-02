@@ -437,7 +437,7 @@ if (isset($_SESSION['username'])):
             <div id="length" class="requirement">Minimum 8 znaków</div>
             <div id="uppercase" class="requirement">Jedna wielka litera</div>
             <div id="number" class="requirement">Jedna cyfra</div>
-            <div id="special" class="requirement">Jedno specjalne znaki</div>
+            <div id="special" class="requirement">Jeden znak specjalny</div>
         </div>
     </div>
     <!-- Komunikat o błędzie -->
