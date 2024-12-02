@@ -1,6 +1,6 @@
 # Techmart - Internetowy Sklep Elektroniczny
 
-**Wersja:** 0.4.9  
+ 
 **Autorzy:**  
 - Marcin Puzoń
 - Grzegorz Mrzyk  
