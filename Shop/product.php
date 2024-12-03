@@ -43,7 +43,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($product['marka']) . ' ' . htmlspecialchars($product['model']); ?></title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    
     <style>
 .product-page {
     margin: 20px auto; /* Ustawi równy margines nad i pod sekcją produktu */
@@ -479,6 +479,5 @@ function scrollToTop() {
         <div id="swipe-up" onclick="scrollToTop()">
             <img src="./icons/up.png" alt="Swipe Up" />
         </div>
-        <script src="script.js"></script>
 </body>
 </html>
