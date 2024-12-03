@@ -237,7 +237,7 @@ foreach ($cartItems as $item) {
 
         <div class="checkout-form">
             <h3>Formularz zakupu</h3>
-            <form action="process_order.php" method="post">
+            <form action="process_order.php" method="post"  autocomplete="off">
                 <div>
                     <label for="customer-type">Kupujesz jako:</label>
                     <select id="customer-type" name="customer_type">
@@ -248,7 +248,7 @@ foreach ($cartItems as $item) {
 
                 <div>
                     <label for="name">Imię i nazwisko:</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" required autoc>
                 </div>
 
                 <div>
