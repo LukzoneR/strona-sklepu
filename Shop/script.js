@@ -334,6 +334,7 @@ function validatePassword() {
     }
 }
 
+
 function searchProducts() {
     const query = document.getElementById('searchInput').value.trim();
     const resultsContainer = document.getElementById('results');
@@ -352,12 +353,11 @@ function searchProducts() {
         if (xhr.status === 200) {
             const results = JSON.parse(xhr.responseText);
 
-            // Jeśli są wyniki
             if (results.length > 0) {
                 // Tworzymy listę wyników
                 let html = '<ul>';
                 results.forEach(product => {
-                    html += `<li>${product.marka} ${product.model}</li>`;
+                    html += `<li onclick="redirectToProduct('${product.category}', ${product.id})">${product.marka} ${product.model}</li>`;
                 });
                 html += '</ul>';
 
@@ -372,15 +372,7 @@ function searchProducts() {
     xhr.send();
 }
 
-// Zamknięcie wyników, jeśli kliknięto poza formularz
-document.addEventListener('click', function(event) {
-    const resultsContainer = document.getElementById('results');
-    const searchbar = document.getElementById('searchbar');
-
-    // Sprawdzamy, czy kliknięto w wyszukiwarkę lub jej pole
-    if (!searchbar.contains(event.target)) {
-        resultsContainer.style.display = 'none'; // Ukrywa wyniki
-        resultsContainer.innerHTML = ''; // Czyści wyniki
-    }
-});
-
+function redirectToProduct(category, id) {
+    // Przekierowanie do strony produktu
+    window.location.href = `product.php?category=${category}&id=${id}`;
+}

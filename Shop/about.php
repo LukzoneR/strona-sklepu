@@ -70,13 +70,14 @@ include("db_connect.php")
                 <img src="./images/logos/techmart.svg" alt="Logo strony">
             </div>
             <div id="searchbar">
-                <form action="/search" method="GET" class="formularz" autocomplete="off">
-                    <input type="text" name="query" placeholder="Szukaj produktów...">
-                    <a href="/#">
-                        <img src="./icons/search.png" alt="Szukaj" class="zdjecie">
-                    </a>
-                </form>       
-            </div>
+    <form id="searchForm" class="formularz" autocomplete="off">
+        <input type="text" id="searchInput" name="query" placeholder="Szukaj produktów..." oninput="searchProducts()">
+        <a href="/#">
+            <img src="./icons/search.png" alt="Szukaj" class="zdjecie">
+        </a>
+    </form>
+    <div id="results"></div> <!-- Div na wyniki wyszukiwania -->
+</div>
             <div id="user" onclick="document.getElementById('login-modal').style.display='block'">
                 <a href="#">
                     Konto <img src="./icons/user.png" alt="Użytkownik">
