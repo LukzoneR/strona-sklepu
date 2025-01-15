@@ -81,8 +81,3 @@ Projekt **Techmart** składa się z następujących komponentów:
 - SQL injection
 - HTML injection
 
----
-
-## Licencja
-
-Projekt **Techmart** jest dostępny do użytku prywatnego. Wszelkie prawa do kodu są zastrzeżone przez autorów projektu.
